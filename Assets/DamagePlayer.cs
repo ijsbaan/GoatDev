@@ -5,14 +5,13 @@ using UnityEngine;
 public class DamagePlayer : MonoBehaviour
 {
     [SerializeField] float damage;
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
         if (other.CompareTag("Player"))
         {
-            Debug.Log("hit");
-           var health = other.gameObject.GetComponent<HealthSystem>();
-           health.RemoveHealth(damage);
+            var health = other.gameObject.GetComponent<HealthSystem>();
+            health.RemoveHealth(damage);
             Destroy(this.gameObject);
         }
     }
