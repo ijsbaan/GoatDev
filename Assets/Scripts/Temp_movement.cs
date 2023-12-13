@@ -7,7 +7,7 @@ public class Temp_movement : MonoBehaviour
     [SerializeField] private float moveSpeed = 7;
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         Vector2 input = new Vector2(0, 0);
         if (Input.GetKey(KeyCode.W))
@@ -27,7 +27,7 @@ public class Temp_movement : MonoBehaviour
             input.x += 1;
         }
 
-        Vector3 dir = new Vector3(input.x, input.y, 0);
+        Vector3 dir = new Vector3(input.x, input.y, 0).normalized;
         transform.position += dir * moveSpeed * Time.deltaTime;
     }
 
