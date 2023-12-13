@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5239087195536460021}
   - component: {fileID: 3201199740466221799}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,4 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ac4d472aee3b344beeedf6dbce5233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 0
+  projectileSpeed: 10

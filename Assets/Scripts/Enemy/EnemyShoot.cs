@@ -7,8 +7,8 @@ using static UnityEditor.FilePathAttribute;
 public class EnemyShoot : MonoBehaviour
 {
     [SerializeField] GameObject Projectile;
-    [SerializeField] float projectilespeed;
-    [SerializeField] Vector3 targetPosition;
+    float zPos = 2;
+    [SerializeField] Vector2 targetPosition;
     [SerializeField] bool shootBullet;
     [SerializeField] float timeBetweenShots;
 
@@ -33,9 +33,10 @@ public class EnemyShoot : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenShots);
         shootBullet = true;
     }
-    void ShootAtPosition(Vector3 targetposition)
+    public void ShootAtPosition(Vector3 targetposition)
     {
         Vector3 distanceToLocation = (targetposition - transform.position).normalized;
+        distanceToLocation.z = zPos;
         Quaternion rotation = Quaternion.LookRotation(distanceToLocation);
         var projectile = Instantiate(Projectile,transform.position,rotation,transform);
     }
