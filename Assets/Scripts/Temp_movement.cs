@@ -38,5 +38,15 @@ public class Temp_movement : MonoBehaviour
         {
             ipickup.Pickup();
         }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Iinteractable interactable = collision.gameObject.GetComponent<Iinteractable>();
+        if( interactable != null )
+        {
+            if(Input.GetKey(KeyCode.E)) { interactable.Interact(); }
+        }
     }
 }
