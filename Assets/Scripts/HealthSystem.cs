@@ -1,17 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth;
-    
+    [SerializeField] private Image barImage;
+    [SerializeField] private float healthAmount;
+    private float maxHealth;
+  
+
+    private void Awake()
+    {
+        maxHealth = healthAmount;
+        SetHealth(GetHealthNormalized());
+    }
+
     public void RemoveHealth(float removeAmount)
     {
-        health -= removeAmount;
+        healthAmount -= removeAmount;
+        SetHealth(GetHealthNormalized());
     }
-    
+
+
     public void Death()
     {
         GameObject.Destroy(gameObject);
@@ -19,11 +31,24 @@ public class HealthSystem : MonoBehaviour
 
     public void SetMaxHealth()
     {
-        health = maxHealth;
+        healthAmount = maxHealth;
     }
 
     public void GiveHealth(float amount)
     {
-        health += amount;
+        healthAmount += amount;
+    }
+
+    public float GetHealthNormalized()
+    {
+        return healthAmount / maxHealth;
+    }
+    private void SetHealth(float healthNormalized)
+    {
+        barImage.fillAmount = healthNormalized;
+    }
+    private void Update()
+    {
+        Debug.Log(healthAmount);
     }
 }
