@@ -9,7 +9,6 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private Image barImage;
     [SerializeField] private float healthAmount;
     private float maxHealth;
-  
 
     private void Awake()
     {
@@ -32,11 +31,13 @@ public class HealthSystem : MonoBehaviour
     public void SetMaxHealth()
     {
         healthAmount = maxHealth;
+        SetHealth(GetHealthNormalized());
     }
 
     public void GiveHealth(float amount)
     {
         healthAmount += amount;
+        SetHealth(GetHealthNormalized());
     }
 
     public float GetHealthNormalized()
@@ -46,9 +47,5 @@ public class HealthSystem : MonoBehaviour
     private void SetHealth(float healthNormalized)
     {
         barImage.fillAmount = healthNormalized;
-    }
-    private void Update()
-    {
-        Debug.Log(healthAmount);
     }
 }
