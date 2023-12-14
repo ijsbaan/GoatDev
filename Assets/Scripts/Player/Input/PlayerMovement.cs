@@ -19,15 +19,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 input = inputPlayer.Player.Movement.ReadValue<Vector2>();
         
-        Vector3 dir = new Vector3(input.x, input.y, 0);
+        Vector3 dir = new Vector3(input.x, input.y, 0).normalized;
         transform.position += dir * speed * Time.deltaTime;
             
         return input;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         GetInputValue();
-       Debug.Log(GetInputValue());
     }
 }
