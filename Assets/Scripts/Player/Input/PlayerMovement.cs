@@ -8,7 +8,7 @@ using UnityEngine.Windows;
 public class PlayerMovement : MonoBehaviour
 {
     private InputPlayer inputPlayer;
-    public int speed = 10;
+    [SerializeField] private int speed = 10;
     void Awake()
     {
         inputPlayer = new InputPlayer();
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 input = inputPlayer.Player.Movement.ReadValue<Vector2>();
         
-        Vector3 dir = new Vector3(input.x, input.y, 0).normalized;
+        Vector3 dir = new Vector3(input.x, input.y, 0);
         transform.position += dir * speed * Time.deltaTime;
             
         return input;
@@ -28,6 +28,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         GetInputValue();
-       // Debug.Log(GetInputValue());
+       Debug.Log(GetInputValue());
     }
 }
