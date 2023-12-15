@@ -8,7 +8,7 @@ using UnityEngine.Windows;
 public class PlayerMovement : MonoBehaviour
 {
     private InputPlayer inputPlayer;
-    public int speed = 10;
+    [SerializeField] private int speed = 10;
     void Awake()
     {
         inputPlayer = new InputPlayer();
@@ -25,9 +25,8 @@ public class PlayerMovement : MonoBehaviour
         return input;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         GetInputValue();
-       // Debug.Log(GetInputValue());
     }
 }
