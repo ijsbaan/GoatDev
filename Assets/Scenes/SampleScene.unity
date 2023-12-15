@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 449225444, guid: 3421553f8df6c0143a34cdaededa70a0, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 499430099387549924, guid: 3421553f8df6c0143a34cdaededa70a0, type: 3}
       propertyPath: m_Name
       value: Chest
@@ -391,7 +395,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -597,5 +601,9 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 977483118}
+    - target: {fileID: 8939788378751394199, guid: 0f6cfc3e85d0038459581bdb71eb0c42, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6cfc3e85d0038459581bdb71eb0c42, type: 3}

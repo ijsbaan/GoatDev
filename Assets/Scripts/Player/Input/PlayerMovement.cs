@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         return input;
     }
 
+
     private void FixedUpdate()
     {
         GetInputValue();
