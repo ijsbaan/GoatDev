@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 449225443}
   - component: {fileID: 449225444}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: ChestCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e6252d54f5ab64fa81def7d96df169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInteracting: 0
+  camera: {fileID: 0}
 --- !u!61 &499430099387549925
 BoxCollider2D:
   m_ObjectHideFlags: 0
