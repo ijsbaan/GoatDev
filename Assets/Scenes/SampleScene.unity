@@ -1083,11 +1083,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291930241}
   m_CullTransparentMesh: 1
---- !u!1 &449225442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 449225442, guid: 3421553f8df6c0143a34cdaededa70a0, type: 3}
-  m_PrefabInstance: {fileID: 499430101057605812}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &566347497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1096,6 @@ GameObject:
   - component: {fileID: 566347498}
   - component: {fileID: 566347502}
   - component: {fileID: 566347503}
-  - component: {fileID: 566347504}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1200,18 +1194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
---- !u!114 &566347504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566347497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa1147f158545bb449655672f6f5c3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &619561711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,10 +4489,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
-    - target: {fileID: 499430099387549926, guid: 3421553f8df6c0143a34cdaededa70a0, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 449225442}
     - target: {fileID: 499430099387549927, guid: 3421553f8df6c0143a34cdaededa70a0, type: 3}
       propertyPath: m_RootOrder
       value: 0
