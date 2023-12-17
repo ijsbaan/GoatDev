@@ -6,18 +6,18 @@ public class TempPlayerTrigger : MonoBehaviour
 {
     private InputPlayer inputPlayer;
     private Iinteractable interact;
+   [SerializeField] private bool canInteract = false;
 
     private void Start()
     {
         interact = gameObject.GetComponent<Iinteractable>();
         inputPlayer = new InputPlayer();
-        inputPlayer.Player.Interact.Enable();
         inputPlayer.Player.Interact.performed += Interact_performed;
     }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        //interact.Interact();
+        canInteract = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,7 +35,16 @@ public class TempPlayerTrigger : MonoBehaviour
         Iinteractable interactable = collision.gameObject.GetComponent<Iinteractable>();
         if (interactable != null)
         {
-            if (inputPlayer.Player.Interact.triggered) { interactable.Interact(); }
+            inputPlayer.Player.Interact.Enable();
+            if (canInteract) { interactable.Interact(); canInteract = false; }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Iinteractable interactable = collision.gameObject.GetComponent<Iinteractable>();
+        if (interactable != null)
+        {
+            inputPlayer.Player.Interact.Disable();
         }
     }
 }
