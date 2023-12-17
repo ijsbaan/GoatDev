@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class TempPlayerTrigger : MonoBehaviour
 {
+    private InputPlayer inputPlayer;
+    private Iinteractable interact;
+
+    private void Start()
+    {
+        interact = gameObject.GetComponent<Iinteractable>();
+        inputPlayer = new InputPlayer();
+        inputPlayer.Player.Interact.Enable();
+        inputPlayer.Player.Interact.performed += Interact_performed;
+    }
+
+    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        //interact.Interact();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Ipickup ipickup = collision.gameObject.GetComponent<Ipickup>();
@@ -19,7 +35,7 @@ public class TempPlayerTrigger : MonoBehaviour
         Iinteractable interactable = collision.gameObject.GetComponent<Iinteractable>();
         if (interactable != null)
         {
-            if (Input.GetKey(KeyCode.E)) { interactable.Interact(); }
+            if (inputPlayer.Player.Interact.triggered) { interactable.Interact(); }
         }
     }
 }
