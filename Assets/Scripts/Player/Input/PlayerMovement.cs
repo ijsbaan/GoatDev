@@ -4,13 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 
 public class PlayerMovement : MonoBehaviour
 {
     private InputPlayer inputPlayer;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Image dashImage;
 
+    [SerializeField] private float fillDuration = 2f;
     [SerializeField] private float speed = 10;
     [SerializeField] private float dashSpeed = 20;
     [SerializeField] private float runThreshold = 0.5f;
@@ -26,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash_performed(InputAction.CallbackContext obj)
     {
-        if (canDash)
+        Vector2 input = GetInputValue();
+        if (canDash && input != Vector2.zero)
         {
+            dashImage.fillAmount = 0;
             StartCoroutine(Dash(GetInputValue()));
         }
     }
@@ -58,14 +63,21 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(force, ForceMode2D.Impulse);
         yield return new WaitForSeconds(.2f);
         rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(2);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fillDuration)
+        {
+            yield return null;
+            elapsedTime += Time.deltaTime;
+            dashImage.fillAmount = Mathf.Lerp(0f, 1f, elapsedTime / fillDuration);
+        }
+        dashImage.fillAmount = 1f;
         canDash = true;
     }
+
 
     private void Update()
     {
         HandleMovement();
-
-
     }
 }
