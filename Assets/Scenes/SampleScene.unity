@@ -247,29 +247,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6532558847133286739, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532558847133286739, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
-      propertyPath: runThreshold
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6532558847133286741, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532558848907171540, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
-      propertyPath: m_Color.b
-      value: 0.58488333
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532558848907171540, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532558848907171540, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6132076
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
