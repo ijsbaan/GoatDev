@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class IdleState : IEnemyState
 {
-    private readonly EnemyController enemyController;
+    private readonly EnemyStateMachine enemyController;
+    private readonly EnemyType enemyType;
     private float idleTimer = 0f;
     private float idleDuration = 3f;
 
-    public IdleState(EnemyController controller)
+    public IdleState(EnemyStateMachine controller,EnemyType type)
     {
         enemyController = controller;
+        enemyType = type;
     }
 
     public void EnterState()
@@ -26,8 +28,13 @@ public class IdleState : IEnemyState
         // Example: If idle duration is reached, transition to another state (e.g., AttackState)
         if (idleTimer >= idleDuration)
         {
-            enemyController.ChangeState(new AttackState(enemyController));
+            if (enemyType == EnemyType.tower)
+            {
+                enemyController.ChangeState(new AttackState(enemyController,AttackType.ranged));
+            }
         }
+
+
     }
 
     public void ExitState()

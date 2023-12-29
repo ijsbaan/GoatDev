@@ -1,13 +1,30 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+
+
+public enum AttackType
+{
+    melee,
+    ranged
+}
+
+public enum EnemyType
+{
+    basic,
+    chasing,
+    tower
+}
+
+public class EnemyStateMachine : MonoBehaviour
 {
     private IEnemyState currentState;
+    [SerializeField] internal Attack attack;
+    [SerializeField] EnemyType enemyType;
 
     // Set the initial state (e.g., in Start() method)
     private void Start()
     {
-        ChangeState(new IdleState(this));
+        ChangeState(new IdleState(this,enemyType));
     }
 
     // Update is called once per frame

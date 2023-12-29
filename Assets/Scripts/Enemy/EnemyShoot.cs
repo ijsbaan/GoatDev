@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.FilePathAttribute;
 
-public class EnemyShoot : MonoBehaviour
+public class EnemyShoot : Attack
 {
     [SerializeField] GameObject Projectile;
     float zPos = 2;
@@ -19,12 +19,11 @@ public class EnemyShoot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (shootBullet)
-        {
-            shootBullet = false;
-            StartCoroutine("shootAtTarget");
-        }
-
+            if (shootBullet)
+            {
+                shootBullet = false;
+                StartCoroutine("shootAtTarget");
+            }
     }
 
     IEnumerator shootAtTarget()
