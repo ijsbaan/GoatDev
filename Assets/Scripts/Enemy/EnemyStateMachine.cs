@@ -1,52 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateMachine : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    public enum EnemyState
+    private IEnemyState currentState;
+
+    // Set the initial state (e.g., in Start() method)
+    private void Start()
     {
-        Idle,
-        Chase,
-        Attack
+        ChangeState(new IdleState(this));
     }
 
-    [SerializeField]
-    EnemyState _currentState = EnemyState.Idle;
-
-    BaseState _state;
-
-    void GetCurrentState()
+    // Update is called once per frame
+    private void Update()
     {
-        switch (_currentState)
+        if (currentState != null)
         {
-            case EnemyState.Idle:
-                _state = new IdleState();
-                break;
-            case EnemyState.Chase:
-                break;
-            case EnemyState.Attack:
-                break;
-            default:
-                break;
-
-
+            currentState.UpdateState();
         }
     }
 
-    private void Awake()
+    public void ChangeState(IEnemyState newState)
     {
-        //_state = GetCurrentState();
-    }
+        if (currentState != null)
+        {
+            currentState.ExitState();
+        }
 
-    private void Start()
-    {
-        _state.Enter(this);
+        currentState = newState;
+        currentState.EnterState();
     }
-
-    private void Update()
-    {
-        _state.Execute(this);
-    }
-
 }
