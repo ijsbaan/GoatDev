@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AttackState : IEnemyState
 {
-    private readonly EnemyStateMachine enemyController;
+    private readonly EnemyController enemyController;
     private readonly AttackType attackType;
-    EnemyShoot shoot;
 
-    public AttackState(EnemyStateMachine controller, AttackType type)
+    public AttackState(EnemyController controller, AttackType type)
     {
         enemyController = controller;
         attackType = type;
@@ -15,12 +14,7 @@ public class AttackState : IEnemyState
 
     public void EnterState()
     {
-        // Enter attack state behavior
-        if (attackType == AttackType.ranged)
-        {
-            shoot = enemyController.attack.GetComponent<EnemyShoot>();
-            shoot.enabled = true;
-        }
+
     }
 
     public void UpdateState()

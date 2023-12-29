@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.FilePathAttribute;
 
-public class EnemyShoot : Attack
+public class EnemyShoot : MonoBehaviour, IEnemyState
 {
     [SerializeField] GameObject Projectile;
     float zPos = 2;
@@ -19,11 +19,7 @@ public class EnemyShoot : Attack
 
     private void FixedUpdate()
     {
-            if (shootBullet)
-            {
-                shootBullet = false;
-                StartCoroutine("shootAtTarget");
-            }
+
     }
 
     IEnumerator shootAtTarget()
@@ -38,5 +34,24 @@ public class EnemyShoot : Attack
         distanceToLocation.z = zPos;
         Quaternion rotation = Quaternion.LookRotation(distanceToLocation);
         var projectile = Instantiate(Projectile,transform.position,rotation,transform);
+    }
+
+    public void EnterState()
+    {
+        if (shootBullet)
+        {
+            shootBullet = false;
+            StartCoroutine("shootAtTarget");
+        }
+    }
+
+    public void UpdateState()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ExitState()
+    {
+        throw new NotImplementedException();
     }
 }

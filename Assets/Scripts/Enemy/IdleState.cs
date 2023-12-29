@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IdleState : IEnemyState
 {
-    private readonly EnemyStateMachine enemyController;
+    private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
     private float idleTimer = 0f;
     private float idleDuration = 3f;
 
-    public IdleState(EnemyStateMachine controller,EnemyType type)
+    public IdleState(EnemyController controller,EnemyType type)
     {
         enemyController = controller;
         enemyType = type;
