@@ -12,16 +12,6 @@ public class EnemyShoot : MonoBehaviour, IEnemyState
     [SerializeField] bool shootBullet;
     [SerializeField] float timeBetweenShots;
 
-    private void Start()
-    {
-    }
-
-
-    private void FixedUpdate()
-    {
-
-    }
-
     IEnumerator shootAtTarget()
     {
         ShootAtPosition(targetPosition);
@@ -38,16 +28,16 @@ public class EnemyShoot : MonoBehaviour, IEnemyState
 
     public void EnterState()
     {
+        shootBullet = true;
+    }
+
+    public void UpdateState()
+    {
         if (shootBullet)
         {
             shootBullet = false;
             StartCoroutine("shootAtTarget");
         }
-    }
-
-    public void UpdateState()
-    {
-        throw new NotImplementedException();
     }
 
     public void ExitState()
