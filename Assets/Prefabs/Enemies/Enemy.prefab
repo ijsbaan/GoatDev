@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5636031721334707757}
   - component: {fileID: 1637295158}
+  - component: {fileID: 1269333569}
   m_Layer: 0
   m_Name: EnemyLogic
   m_TagString: Untagged
@@ -45,10 +46,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 3210414854406665653, guid: a1a46313c21c1bd46a09bfb4b88344d2, type: 3}
-  zPos: 2
   targetPosition: {x: 0, y: 0}
   shootBullet: 1
   timeBetweenShots: 2
+--- !u!114 &1269333569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907215497479966434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3bd57eca98a3f4ea4ea8dabb68a1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: 2
 --- !u!1 &6129760989543127663
 GameObject:
   m_ObjectHideFlags: 0
