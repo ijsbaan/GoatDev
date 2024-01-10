@@ -1,6 +1,5 @@
 using UnityEngine;
-
-
+using NaughtyAttributes;
 
 public enum AttackType
 {
@@ -20,6 +19,15 @@ public class EnemyController : MonoBehaviour
     private IEnemyState currentState;
     [SerializeField] EnemyType enemyType;
     internal GameObject enemyObject;
+    [SerializeField] internal GameObject parent;
+
+    [SerializeField] GameObject player;
+    [ShowIf("enemyType", EnemyType.chasing)]
+    [SerializeField] float fovAngle;
+    [ShowIf("enemyType", EnemyType.chasing)]
+    [SerializeField] float DetectionRange;
+    [ShowIf("enemyType", EnemyType.chasing)]
+    [SerializeField] float chasingSpeed;
 
     // Add a reference to the FlockingBehavior
     private FlockingBehavior flockingBehavior;
@@ -48,7 +56,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.chasing:
                 // Handle chasing state or other states here
-                // ChangeState(new ChasingState(this, enemyType));
+                ChangeState(new ChasingState(this, enemyType,player.transform,fovAngle,DetectionRange,chasingSpeed));
                 break;
             case EnemyType.tower:
                 // For tower type, transition to the EnemyShoot state

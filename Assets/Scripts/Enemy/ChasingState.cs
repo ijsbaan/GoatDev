@@ -7,20 +7,20 @@ public class ChasingState : IEnemyState
     
     private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
-    private int distance;
-    private int fieldofView;
     private readonly Transform playerTransform;
     private readonly float chaseSpeed;
     private float detectionRange; // The distance at which the enemy detects the player
     private float fieldOfViewAngle; // The angle of the enemy's field of view
     private bool playerDetected;
 
-    public ChasingState(EnemyController controller, EnemyType type, Transform player)
+    public ChasingState(EnemyController controller, EnemyType type, Transform player, float fovAngle,float detectionrange,float speed)
     {
         enemyController = controller;
         enemyType = type;
         playerTransform = player;
-
+        this.chaseSpeed = speed;
+        this.fieldOfViewAngle = fovAngle;
+        this.detectionRange = detectionrange;
     }
 
     public void EnterState()
@@ -53,7 +53,7 @@ public class ChasingState : IEnemyState
             if (playerTransform != null)
             {
                 Vector3 direction = (playerTransform.position - enemyController.transform.position).normalized;
-                enemyController.transform.position += direction * chaseSpeed * Time.deltaTime;
+                enemyController.parent.transform.position += direction * chaseSpeed * Time.deltaTime;
             }
         }
     }
