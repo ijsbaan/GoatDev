@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isrunning) transform.position += dir * speed * Time.deltaTime;
 
-        else transform.position += dir * speed * 0.5f * Time.deltaTime;
+        else transform.position += dir * speed * 0.33f * Time.deltaTime;
     }
 
     private IEnumerator Dash(Vector3 dirr)
