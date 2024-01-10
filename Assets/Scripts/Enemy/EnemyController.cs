@@ -20,7 +20,9 @@ public class EnemyController : MonoBehaviour
     private IEnemyState currentState;
     [SerializeField] EnemyType enemyType;
     internal GameObject enemyObject;
-    
+
+    // Add a reference to the FlockingBehavior
+    private FlockingBehavior flockingBehavior;
 
     // Set the initial state (e.g., in Start() method)
     private void Start()
@@ -28,6 +30,12 @@ public class EnemyController : MonoBehaviour
         SetInitialState();
         enemyObject = this.gameObject;
 
+        // Initialize the flocking behavior
+        flockingBehavior = GetComponent<FlockingBehavior>();
+        if (flockingBehavior == null)
+        {
+            flockingBehavior = gameObject.AddComponent<FlockingBehavior>();
+        }
     }
 
     private void SetInitialState()
@@ -65,6 +73,9 @@ public class EnemyController : MonoBehaviour
         {
             currentState.UpdateState();
         }
+
+        // Update the flocking behavior
+        flockingBehavior.Update();
     }
 
     public void ChangeState(IEnemyState newState)
