@@ -8,7 +8,7 @@ public class SeparationBehaviour : MonoBehaviour
     {
         Vector3 separationVector = Vector3.zero;
 
-        Collider[] neighbors = Physics.OverlapSphere(transform.position, separationRadius);
+        Collider2D[] neighbors = Physics2D.OverlapCircleAll(transform.position, separationRadius);
         foreach (var neighbor in neighbors)
         {
             if (neighbor.gameObject != gameObject)

@@ -9,7 +9,7 @@ public class CohesionBehaviour : MonoBehaviour
         Vector3 averagePosition = Vector3.zero;
         int count = 0;
 
-        Collider[] neighbors = Physics.OverlapSphere(transform.position, neighborRadius);
+        Collider2D[] neighbors = Physics2D.OverlapCircleAll(transform.position, neighborRadius);
         foreach (var neighbor in neighbors)
         {
             if (neighbor.gameObject != gameObject)
