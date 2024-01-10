@@ -5,15 +5,15 @@ public class FlockingBehavior : MonoBehaviour
     public float speed = 5f;
     public float rotationSpeed = 1f;
 
-    private AlignmentBehaviour alignmentBehavior;
+    private AllignmentBehaviour alignmentBehavior;
     private CohesionBehaviour cohesionBehavior;
-    private SeparationBehaviour separationBehavior;
+    private SeperationBehaviour separationBehavior;
 
     void Start()
     {
-        alignmentBehavior = GetComponent<AlignmentBehaviour>();
+        alignmentBehavior = GetComponent<AllignmentBehaviour>();
         cohesionBehavior = GetComponent<CohesionBehaviour>();
-        separationBehavior = GetComponent<SeparationBehaviour>();
+        separationBehavior = GetComponent<SeperationBehaviour>();
     }
 
     public void Update()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AlignmentBehaviour : MonoBehaviour
+public class AllignmentBehaviour : MonoBehaviour
 {
     public float neighborRadius = 1f;
 
@@ -12,6 +12,10 @@ public class AlignmentBehaviour : MonoBehaviour
         Collider2D[] neighbors = Physics2D.OverlapCircleAll(transform.position, neighborRadius);
         foreach (var neighbor in neighbors)
         {
+            if(neighbor.tag == "Untagged" || neighbor.tag == "")
+            {
+                break;
+            }
             if (neighbor.gameObject != gameObject)
             {
                 averageVelocity += neighbor.GetComponent<Rigidbody2D>().velocity;
