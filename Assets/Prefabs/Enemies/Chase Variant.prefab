@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1269333569, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 5728962979918306003}
+    - target: {fileID: 1269333569, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
@@ -21,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1269333569, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
       propertyPath: chasingSpeed
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1269333569, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
       propertyPath: DetectionRange
@@ -75,6 +79,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chase
       objectReference: {fileID: 0}
+    - target: {fileID: 6620918570715943917, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
     m_RemovedComponents:
     - {fileID: 1637295158, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
+--- !u!1 &5728962979918306003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6488338061708627396, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
+  m_PrefabInstance: {fileID: 1552167839810377495}
+  m_PrefabAsset: {fileID: 0}
