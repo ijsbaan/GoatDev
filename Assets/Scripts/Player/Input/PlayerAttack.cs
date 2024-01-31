@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject attackBox;
     private Coroutine attackCoroutine;
     private bool isAttacking = false;
-    private GameObject currentHitbox; 
+    private GameObject currentHitbox; // Reference to the current hitbox
 
     private void Awake()
     {
@@ -39,8 +39,9 @@ public class PlayerAttack : MonoBehaviour
     {
         currentHitbox = Instantiate(attackBox, gameObject.transform.position + MovementDirection(), Quaternion.identity);
         isAttacking = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
+        yield return new WaitForSeconds(1f);
 
         isAttacking = false;
         Destroy(currentHitbox);
