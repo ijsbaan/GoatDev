@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject attackBox;
     private Coroutine attackCoroutine;
     private bool isAttacking = false;
+    private GameObject currentHitbox; 
 
     private void Awake()
     {
@@ -25,56 +26,23 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackPerformed(InputAction.CallbackContext obj)
     {
-        // If an attack is already in progress, do nothing
+        // Start a new attack
         if (isAttacking)
         {
-            return;
+            StopCoroutine(attackCoroutine);
+            Destroy(currentHitbox); // Destroy the hitbox from the last coroutine
         }
-
-        // Start a new attack
         attackCoroutine = StartCoroutine(Attack());
     }
 
     public IEnumerator Attack()
     {
+        currentHitbox = Instantiate(attackBox, gameObject.transform.position + MovementDirection(), Quaternion.identity);
         isAttacking = true;
+        yield return new WaitForSeconds(1f);
 
-        var hitbox = Instantiate(attackBox, gameObject.transform.position + MovementDirection(), Quaternion.identity);
 
-        // Initiate recursive countdown for hitbox lifetime
-        yield return StartCoroutine(RecursiveCountdownCoroutine(2, hitbox));
-
-        Destroy(hitbox);
         isAttacking = false;
-    }
-
-    private IEnumerator RecursiveCountdownCoroutine(float timeRemaining, GameObject hitbox)
-    {
-        // Base case
-        if (timeRemaining <= 0)
-        {
-            yield break;
-        }
-
-        // Check if cancellation condition is met
-        if (CancelCondition())
-        {
-            Debug.Log("Attack cancelled.");
-            yield break;
-        }
-
-        Debug.Log($"Time remaining: {timeRemaining}");
-
-        // Wait for a short duration
-        yield return new WaitForSeconds(0.1f);
-
-        // Recursive call
-        yield return StartCoroutine(RecursiveCountdownCoroutine(timeRemaining - 0.1f, hitbox));
-    }
-
-    private bool CancelCondition()
-    {
-        // Check if the attack input is performed again
-        return inputActions.Player.Attack.triggered;
+        Destroy(currentHitbox);
     }
 }
