@@ -55,8 +55,16 @@ public class EnemyController : MonoBehaviour
                 ChangeState(new IdleState(this, enemyType));
                 break;
             case EnemyType.chasing:
+                // Initialize FlockingBehavior here and pass it to ChasingState
+                FlockingBehavior chasingFlockingBehavior = GetComponent<FlockingBehavior>();
+                if (chasingFlockingBehavior == null)
+                {
+                    chasingFlockingBehavior = gameObject.AddComponent<FlockingBehavior>();
+                }
+
+                // Pass chasingFlockingBehavior to ChasingState
+                ChangeState(new ChasingState(this, enemyType, player.transform, fovAngle, DetectionRange, chasingSpeed, chasingFlockingBehavior));
                 // Handle chasing state or other states here
-                ChangeState(new ChasingState(this, enemyType,player.transform,fovAngle,DetectionRange,chasingSpeed));
                 break;
             case EnemyType.tower:
                 // For tower type, transition to the EnemyShoot state
