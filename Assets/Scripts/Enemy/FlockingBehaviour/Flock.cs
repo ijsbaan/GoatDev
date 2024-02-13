@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class Flock : MonoBehaviour
     public FlockAgent agentPrefab;
     List<FlockAgent> agents = new List<FlockAgent>();
 
-    public FlockBehaviour behviour;
+    public FlockBehaviour behaviour;
 
     [Range(10, 500)] public int startingCount = 250;
     const float agentDensity = 0.08f;
@@ -31,7 +32,7 @@ public class Flock : MonoBehaviour
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
 
-        for(int i = 0; i < startingCount; i++)
+        for (int i = 0; i < startingCount; i++)
         {
             FlockAgent newagent = Instantiate(agentPrefab, Random.insideUnitCircle * startingCount * agentDensity, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
             newagent.name = "Agent" + i;
@@ -41,6 +42,36 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (FlockAgent agent in agents)
+        {
+            List<Transform> context = GetNearbyObjects(agent);
+
+            Vector2 move = behaviour.CalculateMove(agent, context, this);
+
+            move *= driveFactor;
+            
+            if(move.sqrMagnitude < squareMaxSpeed)
+            {
+                move = move.normalized * maxSpeed;
+            }
+            agent.Move(move);
+        }
+    }
+
+    List<Transform> GetNearbyObjects(FlockAgent agent)
+    {
+        List<Transform> context = new List<Transform>();
+        Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighbourRadius);
+
+        foreach(Collider2D col in contextColliders)
+        {
+            if(col != agent.AgentCollider)
+            {
+                context.Add(col.transform);
+            }
+        }
+
+        return context;
     }
 }
+
