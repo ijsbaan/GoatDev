@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: -1525114555122349619, guid: 3bcb73a88f4b0cd4cb83365a0c06b17f, type: 3}
-  behviour: {fileID: 0}
+  behaviour: {fileID: 11400000, guid: 964986b2258139b4fa0d626695faec21, type: 2}
   startingCount: 250
   driveFactor: 10
   maxSpeed: 5
@@ -498,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2705530953533582712, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -100000
       objectReference: {fileID: 0}
     - target: {fileID: 2705530953533582712, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
       propertyPath: m_LocalPosition.y
