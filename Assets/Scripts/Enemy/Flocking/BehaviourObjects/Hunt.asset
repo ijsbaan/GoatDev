@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5ec9ec6a190704abf07450e77a92f4, type: 3}
-  m_Name: Cohesion
+  m_Script: {fileID: 11500000, guid: dcda214681edbd5439cffef3bbac3516, type: 3}
+  m_Name: Hunt
   m_EditorClassIdentifier: 
+  target: {fileID: 6532558847133286741, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
