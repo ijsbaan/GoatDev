@@ -5,9 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/Spyke")]
 public class HuntBehaviour : FlockBehaviour
 {
-    [SerializeField] private GameObject target;
+    private GameObject target;
+
+    void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
+        target = GameObject.FindGameObjectWithTag("Player");
+
+        if (target == null)
+        {
+            return agent.transform.up;
+        }
         if (agent == null)
             return agent.transform.up;
 
