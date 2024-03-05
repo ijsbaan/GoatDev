@@ -5,11 +5,13 @@ using UnityEngine;
 public class Chest : MonoBehaviour, Iinteractable
 {
     [SerializeField] private GameObject camera;
+    [SerializeField] ChestDrop drop;
     private bool isInteracting;
     public void Interact()
     { 
 
         Debug.Log("interact");
+        drop.Open();
 
         isInteracting = !isInteracting;
         //GameObject.Destroy(gameObject);
