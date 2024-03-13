@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcda214681edbd5439cffef3bbac3516, type: 3}
-  m_Name: Hunt
+  m_Script: {fileID: 11500000, guid: 4948bc216a51c3f4094ea6bb70dacbaa, type: 3}
+  m_Name: SteeredHunt
   m_EditorClassIdentifier: 
+  agentSmoothTime: 0.1
