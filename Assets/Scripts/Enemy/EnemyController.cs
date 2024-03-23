@@ -12,7 +12,8 @@ public enum EnemyType
 {
     basic,
     chasing,
-    tower
+    tower,
+    dryad
 }
 
 public class EnemyController : MonoBehaviour
@@ -52,6 +53,19 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     Debug.LogWarning("EnemyShoot component not found on the tower type enemy.");
+                    // Handle if EnemyShoot component is not found
+                }
+                break;
+            case EnemyType.dryad:
+                // For tower type, transition to the EnemyShoot state
+                EnemySpike spikeComponent = GetComponent<EnemySpike>();
+                if (spikeComponent != null)
+                {
+                    ChangeState(spikeComponent);
+                }
+                else
+                {
+                    Debug.LogWarning("EnemySpike component not found on the tower type enemy.");
                     // Handle if EnemyShoot component is not found
                 }
                 break;
