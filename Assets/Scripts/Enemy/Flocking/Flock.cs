@@ -13,6 +13,7 @@ public class Flock : MonoBehaviour
     public FlockBehaviour behaviour;
 
     public int spawnChildren = 1;
+    public int maxChildren = 10;
     const float AgentDensity = 0.08f;
 
     public int counter = 0;
@@ -47,10 +48,8 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(agents.Count < 5) counter++;
-        
-        if(counter > 1000 && agents.Count < 5)
+        if (agents.Count < maxChildren) counter++;
+        if(counter > 1000 && agents.Count < maxChildren)
         { 
             makeChildren();
             counter = 0;

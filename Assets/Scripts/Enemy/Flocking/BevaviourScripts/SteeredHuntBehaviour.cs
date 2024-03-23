@@ -11,21 +11,15 @@ public class SteeredHuntBehaviour : FlockBehaviour
     public float agentSmoothTime;
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        target = GameObject.FindGameObjectWithTag("Player");
-
         if (target == null)
         {
-            return agent.transform.up;
+            target = GameObject.FindGameObjectWithTag("Player");
+            if (target == null)
+                return agent.transform.up;
         }
-        if (agent == null)
-            return agent.transform.up;
 
-        Vector2 huntMove = Vector2.zero;
-
-        huntMove += (Vector2)(target.transform.position - agent.transform.position);
-
-        huntMove = Vector2.SmoothDamp(agent.transform.up, huntMove, ref currentVelocity, agentSmoothTime);
+        Vector2 huntMove = ((Vector2)target.transform.position - (Vector2)agent.transform.position).normalized;
 
         return huntMove;
-    }   
+    }
 }
