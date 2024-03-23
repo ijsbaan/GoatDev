@@ -8,12 +8,13 @@ public class ChasingState : IEnemyState
     private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
     private readonly Transform playerTransform;
+    private FlockingBehavior flocking;
     private readonly float chaseSpeed;
     private float detectionRange; // The distance at which the enemy detects the player
     private float fieldOfViewAngle; // The angle of the enemy's field of view
     private bool playerDetected;
 
-    public ChasingState(EnemyController controller, EnemyType type, Transform player, float fovAngle,float detectionrange,float speed)
+    public ChasingState(EnemyController controller, EnemyType type, Transform player, float fovAngle,float detectionrange,float speed,FlockingBehavior flockingBehavior)
     {
         enemyController = controller;
         enemyType = type;
@@ -21,6 +22,7 @@ public class ChasingState : IEnemyState
         this.chaseSpeed = speed;
         this.fieldOfViewAngle = fovAngle;
         this.detectionRange = detectionrange;
+        this.flocking = flockingBehavior;
     }
 
     public void EnterState()
@@ -42,7 +44,6 @@ public class ChasingState : IEnemyState
                 if (hit.collider != null && hit.collider.CompareTag("Player"))
                 {
                     playerDetected = true;
-                    // Optionally add behavior when player is detected within range and FOV
                 }
             }
         }

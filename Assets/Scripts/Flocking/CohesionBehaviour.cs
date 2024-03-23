@@ -4,14 +4,26 @@ public class CohesionBehaviour : MonoBehaviour
 {
     public float neighborRadius = 2f;
 
+    private Rigidbody2D rb2D;
+
+    void Start()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
+    }
+
     public Vector3 CalculateCohesion()
     {
         Vector3 averagePosition = Vector3.zero;
         int count = 0;
 
-        Collider[] neighbors = Physics.OverlapSphere(transform.position, neighborRadius);
+        Collider2D[] neighbors = Physics2D.OverlapCircleAll(transform.position, neighborRadius);
         foreach (var neighbor in neighbors)
         {
+            if (!neighbor.CompareTag("Untagged"))
+            {
+                continue;
+            }
+
             if (neighbor.gameObject != gameObject)
             {
                 averagePosition += neighbor.transform.position;
