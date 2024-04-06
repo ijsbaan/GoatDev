@@ -24,7 +24,9 @@ public class Flock : MonoBehaviour
     [Range(1f, 10f)]
     public float neighbourRadius = 1.5f;
     [Range(0f, 1f)]
-    public float avoidanceRadiusMultiplier = 0.5f;  
+    public float avoidanceRadiusMultiplier = 0.5f;
+
+    public float attackRange;
 
     float squareMaxSpeed;
     float squareNeighbourRadius;
@@ -57,13 +59,8 @@ public class Flock : MonoBehaviour
 
         foreach (FlockAgent agent in agents)
         {
-            //if (agent != null)
-            //{
-            //    continue;
-            //}
-            List<Transform> context = GetNearbyObjects(agent);
 
-            //agent.GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
+            List<Transform> context = GetNearbyObjects(agent);
 
             Vector2 move = behaviour.CalculateMove(agent, context, this);
 
