@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5414306238843961519}
   - component: {fileID: 3275555205332916499}
   - component: {fileID: -1525114555122349619}
-  - component: {fileID: 9110504599406094294}
+  - component: {fileID: 1024071319498804068}
   m_Layer: 0
   m_Name: FlockEnemy
   m_TagString: Untagged
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6d2bd27d4ffb34aa294b3d8514486e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9110504599406094294
+--- !u!114 &1024071319498804068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,6 +134,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6931702871557662008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c612a579c16261447897da7b9b350856, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a578e5b7b4f59542b848335d524ec63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 6532558847133286737, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
+  randomTimer: 3

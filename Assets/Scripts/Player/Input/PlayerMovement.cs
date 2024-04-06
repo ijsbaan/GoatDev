@@ -61,7 +61,9 @@ public class PlayerMovement : MonoBehaviour
         canDash = false;
         Vector2 force = new Vector2(dirr.x, dirr.y).normalized * dashSpeed;
         rb.AddForce(force, ForceMode2D.Impulse);
+
         yield return new WaitForSeconds(.2f);
+
         rb.velocity = Vector2.zero;
         float elapsedTime = 0f;
 

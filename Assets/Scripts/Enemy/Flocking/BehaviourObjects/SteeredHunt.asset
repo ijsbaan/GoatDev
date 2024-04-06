@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4948bc216a51c3f4094ea6bb70dacbaa, type: 3}
   m_Name: SteeredHunt
   m_EditorClassIdentifier: 
-  agentSmoothTime: 0.1
+  agentSmoothTime: 0.05

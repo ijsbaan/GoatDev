@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcda214681edbd5439cffef3bbac3516, type: 3}
   m_Name: Hunt
   m_EditorClassIdentifier: 
+  stoppingDistance: 2
