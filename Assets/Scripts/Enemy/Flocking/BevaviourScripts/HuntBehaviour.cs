@@ -5,24 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/Spyke")]
 public class HuntBehaviour : FlockBehaviour
 {
-    private GameObject target;
+    public float stoppingDistance = 3f; // Adjust this distance as per your requirement
 
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        GameObject target = GameObject.FindGameObjectWithTag("Player");
 
-        if (target == null)
+        if (target == null || agent == null)
         {
             return agent.transform.up;
         }
-        if (agent == null)
-            return agent.transform.up;
 
         Vector2 huntMove = Vector2.zero;
-            
-        huntMove += (Vector2) (target.transform.position - agent.transform.position);
 
-        huntMove = huntMove.normalized;
+        float distanceToTarget = Vector2.Distance(agent.transform.position, target.transform.position);
+
+        if (distanceToTarget > stoppingDistance)
+        {
+            huntMove = (Vector2)(target.transform.position - agent.transform.position).normalized;
+        }
 
         return huntMove;
     }
