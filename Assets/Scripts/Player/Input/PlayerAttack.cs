@@ -8,7 +8,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject attackBox;
     private Coroutine attackCoroutine;
     private bool isAttacking = false;
-    private GameObject currentHitbox; // Reference to the current hitbox
+    private GameObject currentHitbox;
+
+
 
     private void Awake()
     {
@@ -30,18 +32,21 @@ public class PlayerAttack : MonoBehaviour
         if (isAttacking)
         {
             StopCoroutine(attackCoroutine);
-            Destroy(currentHitbox); // Destroy the hitbox from the last coroutine
+            Destroy(currentHitbox);
         }
         attackCoroutine = StartCoroutine(Attack());
     }
 
     public IEnumerator Attack()
     {
-        currentHitbox = Instantiate(attackBox, gameObject.transform.position + MovementDirection(), Quaternion.identity);
+        Vector3 spawnPosition = transform.position + MovementDirection();
+
+        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, MovementDirection());
+
+        currentHitbox = Instantiate(attackBox, spawnPosition, rotation);
+
         isAttacking = true;
         yield return new WaitForSeconds(0.5f);
-
-        yield return new WaitForSeconds(1f);
 
         isAttacking = false;
         Destroy(currentHitbox);
