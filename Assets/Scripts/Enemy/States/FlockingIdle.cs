@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlockingIdle : IdleState
+public class FlockingIdleState : IdleState
 {
 
     private readonly EnemyController enemyController;
@@ -13,7 +13,7 @@ public class FlockingIdle : IdleState
         base.EnterState();
         enemyController.GetComponent<Flock>().enabled = false;
     }
-    public FlockingIdle(EnemyController controller, EnemyType type) : base(controller, type)
+    public FlockingIdleState(EnemyController controller, EnemyType type) : base(controller, type)
     {
         enemyController = controller;
         enemyType = type;

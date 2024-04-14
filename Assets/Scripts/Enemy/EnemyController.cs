@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
                 ChangeState(new IdleState(this, enemyType));
                 break;
             case EnemyType.flocking:
-                ChangeState(new FlockingIdle(this, enemyType));
+                ChangeState(new FlockingIdleState(this, enemyType));
                 break;
             case EnemyType.tower:
                 // For tower type, transition to the EnemyShoot state
