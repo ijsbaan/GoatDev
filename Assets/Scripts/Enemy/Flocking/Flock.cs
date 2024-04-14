@@ -13,17 +13,19 @@ public class Flock : MonoBehaviour
     public FlockBehaviour behaviour;
 
     public int spawnChildren = 1;
+    public int maxChildren = 10;
     const float AgentDensity = 0.08f;
 
     public int counter = 0;
     [Range(1f, 100f)]
     public float driveFactor = 10f;
     [Range(1f, 100f)]
-    public float maxSpeed = 5f;
+    public float maxSpeed = 3f;
     [Range(1f, 10f)]
     public float neighbourRadius = 1.5f;
     [Range(0f, 1f)]
-    public float avoidanceRadiusMultiplier = 0.5f;  
+    public float avoidanceRadiusMultiplier = 1f;
+
 
     float squareMaxSpeed;
     float squareNeighbourRadius;
@@ -47,10 +49,8 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(agents.Count < 5) counter++;
-        
-        if(counter > 1000 && agents.Count < 5)
+        if (agents.Count < maxChildren) counter++;
+        if(counter > 1000 && agents.Count < maxChildren)
         { 
             makeChildren();
             counter = 0;
@@ -58,13 +58,8 @@ public class Flock : MonoBehaviour
 
         foreach (FlockAgent agent in agents)
         {
-            //if (agent != null)
-            //{
-            //    continue;
-            //}
-            List<Transform> context = GetNearbyObjects(agent);
 
-            //agent.GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
+            List<Transform> context = GetNearbyObjects(agent);
 
             Vector2 move = behaviour.CalculateMove(agent, context, this);
 
