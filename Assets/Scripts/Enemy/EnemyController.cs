@@ -12,21 +12,21 @@ public enum EnemyType
 {
     basic,
     chasing,
-    tower
+    tower,
+    dryad
 }
 
 public class EnemyController : MonoBehaviour
 {
-    private IEnemyState currentState;
+    [SerializeField] private IEnemyState currentState;
     [SerializeField] EnemyType enemyType;
-    internal GameObject enemyObject;
+    [SerializeField] public GameObject enemyObject;
     
 
     // Set the initial state (e.g., in Start() method)
     private void Start()
     {
         SetInitialState();
-        enemyObject = this.gameObject;
 
     }
 
@@ -54,6 +54,10 @@ public class EnemyController : MonoBehaviour
                     Debug.LogWarning("EnemyShoot component not found on the tower type enemy.");
                     // Handle if EnemyShoot component is not found
                 }
+                break;
+            case EnemyType.dryad:
+                EnemySpike spikeComponent = GetComponent<EnemySpike>();
+                ChangeState(new DryadIdleState(this, enemyType, spikeComponent));
                 break;
         }
     }

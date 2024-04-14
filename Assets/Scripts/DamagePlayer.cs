@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamagePlayer : MonoBehaviour
 {
     [SerializeField] float damage;
+    [SerializeField] bool DestroyAfterHit;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,7 +13,10 @@ public class DamagePlayer : MonoBehaviour
         {
             var health = other.gameObject.GetComponent<HealthSystem>();
             health.RemoveHealth(damage);
-            Destroy(this.gameObject);
+            if (DestroyAfterHit)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

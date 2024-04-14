@@ -7,7 +7,7 @@ public class IdleState : IEnemyState
     private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
     private float idleTimer = 0f;
-    private float idleDuration = 3f;
+    private float idleDuration = 5f;
 
     public IdleState(EnemyController controller,EnemyType type)
     {
@@ -20,7 +20,7 @@ public class IdleState : IEnemyState
         // Enter idle state behavior
     }
 
-    public void UpdateState()
+    public virtual void UpdateState()
     {
         // Implement idle behavior here (e.g., patrol, look around, etc.)
         idleTimer += Time.deltaTime;
@@ -28,12 +28,21 @@ public class IdleState : IEnemyState
         // Example: If idle duration is reached, transition to another state (e.g., AttackState)
         if (idleTimer >= idleDuration)
         {
-            if (enemyType == EnemyType.tower)
-            {
-                enemyController.ChangeState(new AttackState(enemyController,AttackType.ranged));
-            }
+            Attack();
         }
 
+
+    }
+
+    public virtual void WalkAround()
+    {
+        System.Random rand = new System.Random();
+        Vector3 position = new Vector3(rand.Next(0, 10), rand.Next(0, 10), 0);
+        enemyController.enemyObject.transform.position = Vector3.Lerp(enemyController.gameObject.transform.position, position, 0.5f);
+    }
+
+    public virtual void Attack()
+    {
 
     }
 
