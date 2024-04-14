@@ -11,7 +11,7 @@ public enum AttackType
 public enum EnemyType
 {
     basic,
-    chasing,
+    flocking,
     tower,
     dryad
 }
@@ -38,9 +38,8 @@ public class EnemyController : MonoBehaviour
             case EnemyType.basic:
                 ChangeState(new IdleState(this, enemyType));
                 break;
-            case EnemyType.chasing:
-                // Handle chasing state or other states here
-                // ChangeState(new ChasingState(this, enemyType));
+            case EnemyType.flocking:
+                ChangeState(new FlockingIdle(this, enemyType));
                 break;
             case EnemyType.tower:
                 // For tower type, transition to the EnemyShoot state
