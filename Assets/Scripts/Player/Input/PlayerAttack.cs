@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
     private void AttackPerformed(InputAction.CallbackContext obj)
     {
         CheckRotation(playerMovement.direction);
-        // Start a new attack
+
         if (isAttacking)
         {
             StopCoroutine(attackCoroutine);

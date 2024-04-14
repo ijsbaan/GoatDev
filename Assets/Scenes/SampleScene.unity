@@ -282,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackBox: {fileID: 2808327603725229029, guid: fc738601c785e2246ace0e11902a78a9, type: 3}
   playerMovement: {fileID: 977483123}
+  offsetValue: 2
 --- !u!114 &977483123 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6532558847133286739, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
