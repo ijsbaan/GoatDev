@@ -12,6 +12,7 @@ public enum direction
 {
     up, down, left, right
 }
+
 public class PlayerMovement : MonoBehaviour
 {
     private InputPlayer inputPlayer;
@@ -25,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canDash = true;
 
-    
+    public bool isDash = false;
+
+    [HideInInspector] public direction direction;
+
     void Awake()
     {
         inputPlayer = new InputPlayer();
@@ -73,7 +77,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 input = GetInputValue();
         direction dir = GetDirection(input);
 
-        // Rotate the player based on the direction
+        direction = GetDirection(input);
+        
         switch (dir)
         {
             case direction.up:
@@ -95,13 +100,9 @@ public class PlayerMovement : MonoBehaviour
 
     private direction GetDirection(Vector2 input)
     {
-        if (input.magnitude == 0)
-            return direction.right; // Default direction if no input
 
-        // Calculate the angle of input vector relative to right direction
         float angle = Vector2.SignedAngle(Vector2.right, input);
 
-        // Determine the direction based on the angle
         if (angle > 45 && angle <= 135)
             return direction.up;
         else if (angle > -45 && angle <= 45)
