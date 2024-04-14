@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private InputPlayer inputActions;
     [SerializeField] private GameObject attackBox;
+    
     private Coroutine attackCoroutine;
     private bool isAttacking = false;
     private GameObject currentHitbox;
