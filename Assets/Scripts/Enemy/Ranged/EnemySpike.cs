@@ -39,6 +39,7 @@ public class EnemySpike : MonoBehaviour, IEnemyState
 
     public void EnterState()
     {
+        player = FindAnyObjectByType<PlayerMovement>();
         spawnSpike = true;
         pausing = false;
     }
