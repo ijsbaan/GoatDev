@@ -21,6 +21,8 @@ public class EnemySpike : MonoBehaviour, IEnemyState
 
     IEnumerator SummonSpike()
     {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.color = Color.red;
         yield return new WaitForSeconds(timeBetweenSpikes);
         indicator = Instantiate(Indicator, targetPosition, Quaternion.identity, transform);
         Vector3 previousPos = indicator.transform.position;
