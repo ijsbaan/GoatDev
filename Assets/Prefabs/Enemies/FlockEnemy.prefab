@@ -138,4 +138,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6532558847133286737, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
+  attackBox: {fileID: 3618895042377952985, guid: 63ea7a63ad5398240891a37cdcbc4c5d, type: 3}
   randomTimer: 3

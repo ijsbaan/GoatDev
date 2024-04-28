@@ -7,6 +7,8 @@ public class AttackMonsterTemp : MonoBehaviour
 {
     private float stopTarget = 4;
     [SerializeField] Transform target;
+    [SerializeField] GameObject attackBox;
+    Vector2 offset = new Vector2(1,0);
 
     public int randomTimer = 200;
     private float timer;
@@ -39,11 +41,14 @@ public class AttackMonsterTemp : MonoBehaviour
         }
     }
 
-    private IEnumerator Attack()
+    public IEnumerator Attack()
     {
-        Debug.Log("ATTACKS");
+        Vector3 spawnPosition = transform.position + new Vector3(offset.x, offset.y, 0);
 
+        GameObject currentHitbox = Instantiate(attackBox, spawnPosition, Quaternion.identity, transform);
+        currentHitbox.GetComponent<DamageColliderByTag>().damage = 1;
         yield return new WaitForSeconds(0.5f);
-        
+
+        Destroy(currentHitbox);
     }
 }
