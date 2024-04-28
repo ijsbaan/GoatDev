@@ -8,12 +8,21 @@ public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private Image barImage;
     [SerializeField] private float healthAmount;
-    private float maxHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private GameObject affectedObject;
 
     private void Awake()
     {
-        maxHealth = healthAmount;
+        healthAmount = maxHealth;
         SetHealth(GetHealthNormalized());
+    }
+
+    private void FixedUpdate()
+    {
+        if(healthAmount <= 0)
+        {
+            Death();
+        }
     }
 
     public void RemoveHealth(float removeAmount)
@@ -25,7 +34,7 @@ public class HealthSystem : MonoBehaviour
 
     public void Death()
     {
-        GameObject.Destroy(gameObject);
+        GameObject.Destroy(affectedObject);
     }
 
     public void SetMaxHealth()
