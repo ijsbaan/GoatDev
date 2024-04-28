@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  DestroyAfterHit: 0
+  Tag: Player
 --- !u!60 &1971207014332301605
 PolygonCollider2D:
   m_ObjectHideFlags: 0

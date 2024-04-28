@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barImage: {fileID: 1041797641596868285}
   healthAmount: 50
-  maxHealth: 0
+  maxHealth: 50
   affectedObject: {fileID: 6931702871557662008}
 --- !u!1001 &6575783030206610942
 PrefabInstance:
