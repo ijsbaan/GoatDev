@@ -12,10 +12,10 @@ public class TempPlayerTrigger : MonoBehaviour
     {
         interact = gameObject.GetComponent<Iinteractable>();
         inputPlayer = new InputPlayer();
-        inputPlayer.Player.Interact.performed += Interact_performed;
+        inputPlayer.Player.Interact.performed += InteractPerformed;
     }
 
-    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void InteractPerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         canInteract = true;
     }
@@ -27,7 +27,6 @@ public class TempPlayerTrigger : MonoBehaviour
         {
             ipickup.Pickup();
         }
-
     }
 
     private void OnTriggerStay2D(Collider2D collision)

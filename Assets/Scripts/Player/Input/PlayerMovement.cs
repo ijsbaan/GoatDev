@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public direction direction;
 
+    [HideInInspector] public bool cantMove;
     void Awake()
     {
         inputPlayer = new InputPlayer();
