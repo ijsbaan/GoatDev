@@ -16,6 +16,8 @@ public class PlayerAttack : MonoBehaviour
 
     public float offsetValue;
 
+    [SerializeField] private float AttackDamage;
+
 
 
     private void Awake()
@@ -42,6 +44,7 @@ public class PlayerAttack : MonoBehaviour
         Vector3 spawnPosition = transform.position + new Vector3(offset.x, offset.y, 0);
 
         currentHitbox = Instantiate(attackBox, spawnPosition, Quaternion.identity, transform);
+        currentHitbox.GetComponent<DamageColliderByTag>().damage = AttackDamage;
 
         isAttacking = true;
         yield return new WaitForSeconds(0.5f);

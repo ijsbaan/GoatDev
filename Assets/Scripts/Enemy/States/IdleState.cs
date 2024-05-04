@@ -15,7 +15,7 @@ public class IdleState : IEnemyState
         enemyType = type;
     }
 
-    public void EnterState()
+    public virtual void EnterState()
     {
         // Enter idle state behavior
     }
@@ -46,7 +46,7 @@ public class IdleState : IEnemyState
 
     }
 
-    public void ExitState()
+    public virtual void ExitState()
     {
         // Exit idle state behavior
     }
