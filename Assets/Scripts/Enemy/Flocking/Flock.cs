@@ -9,7 +9,7 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
     public FlockAgent agentPrefab;
-    [DoNotSerialize]
+    [HideInInspector]
     public List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehaviour behaviour;
 

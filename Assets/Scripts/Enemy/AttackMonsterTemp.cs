@@ -14,8 +14,15 @@ public class AttackMonsterTemp : MonoBehaviour
     private float timer;
     private float counter = 0f;
 
+    private Quaternion originalRotation;
+
     void Start()
     {
+        PlayerMovement player  = FindAnyObjectByType<PlayerMovement>();
+        if (player != null)
+        {
+            target = player.transform;
+        }
         System.Random random = new System.Random();
         timer = random.Next(randomTimer, randomTimer * 2);
     }
@@ -29,7 +36,7 @@ public class AttackMonsterTemp : MonoBehaviour
         }
 
         float distanceToTarget = Vector2.Distance(transform.position, target.position);
-
+        Debug.Log(target.position);
         if (counter >= timer)
         {
             StartCoroutine(Attack());
