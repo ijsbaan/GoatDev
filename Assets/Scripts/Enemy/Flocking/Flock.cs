@@ -9,7 +9,8 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
     public FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    [DoNotSerialize]
+    public List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehaviour behaviour;
 
     public int spawnChildren = 1;
@@ -79,6 +80,7 @@ public class Flock : MonoBehaviour
         {
             FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitCircle * AgentDensity, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
             newAgent.name = "Agent" + i;
+            newAgent.Owner = this;
             agents.Add(newAgent);
         }
     }

@@ -386,33 +386,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6532558847133286737, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
   m_PrefabInstance: {fileID: 550421683}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &977483119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550421684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa3ec1c56ad6c64a9623f61fbc5af5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackBox: {fileID: 2808327603725229029, guid: fc738601c785e2246ace0e11902a78a9, type: 3}
-  playerMovement: {fileID: 977483123}
-  offsetValue: 2
-  AttackDamage: 10
---- !u!114 &977483123 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6532558847133286739, guid: 24cb94433de947147a3b08e155f5eb0c, type: 3}
-  m_PrefabInstance: {fileID: 550421683}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550421684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24dde5ca26b15b24895a8bfde84b7ca0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1059574189
 GameObject:
   m_ObjectHideFlags: 0
