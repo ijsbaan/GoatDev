@@ -10,7 +10,7 @@ public class PlayerTrigger : MonoBehaviour
     private Iinteractable interact;
     [SerializeField] private bool canInteract = false;
 
-    public float radius = 0.5f;
+    private float radius = 1f;
 
     private void Start()
     {

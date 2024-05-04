@@ -5,35 +5,50 @@ using UnityEngine;
 public class InteractObject : MonoBehaviour, Iinteractable
 {
     [SerializeField] private GameObject camera;
-    private PlayerMovement playermovement;
-    
+    [SerializeField] private Transform player;
+
 
     private bool isInteracting;
-    private bool canInteract;
-    private bool cameraOn;  
- 
+   
+
     public void Interact()
-    { 
+    {
 
         Debug.Log("interact");
 
         isInteracting = !isInteracting;
-        
-        if(this.gameObject.tag == "Chest")
+
+        if (this.gameObject.tag == "Chest")
         {
             if (isInteracting)
             {
                 camera.SetActive(true);
             }
 
-            else 
+            else
                 camera.SetActive(false);
-            
         }
 
-        if(this.gameObject.tag ==" NPC")
+        if (this.gameObject.tag == " NPC")
         {
-            
+
+        }
+    }
+
+
+    private void Update()
+    {
+        if(isInteracting)
+        {
+            float distance = Vector3.Distance(this.gameObject.transform.position, player.position);
+
+            if (distance > 2)
+            {
+                isInteracting = false;
+                camera.SetActive(false);
+
+                isInteracting = false;
+            }
         }
     }
 }
