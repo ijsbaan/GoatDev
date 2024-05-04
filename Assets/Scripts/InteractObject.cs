@@ -7,8 +7,11 @@ public class InteractObject : MonoBehaviour, Iinteractable
     [SerializeField] private GameObject camera;
     private PlayerMovement playermovement;
     
-    private bool isInteracting;
 
+    private bool isInteracting;
+    private bool canInteract;
+    private bool cameraOn;  
+ 
     public void Interact()
     { 
 
@@ -18,8 +21,14 @@ public class InteractObject : MonoBehaviour, Iinteractable
         
         if(this.gameObject.tag == "Chest")
         {
-            if (isInteracting) camera.SetActive(true);
-            else camera.SetActive(false);
+            if (isInteracting)
+            {
+                camera.SetActive(true);
+            }
+
+            else 
+                camera.SetActive(false);
+            
         }
 
         if(this.gameObject.tag ==" NPC")
