@@ -13,7 +13,7 @@ public class AlignmentBehaviour : FlockBehaviour
 
         //add all points together and average
         Vector2 alignmentMove = Vector2.zero;
-     
+
         foreach (Transform item in context)
         {
             alignmentMove += (Vector2)item.transform.up;
@@ -21,5 +21,6 @@ public class AlignmentBehaviour : FlockBehaviour
         alignmentMove /= context.Count;
 
         return alignmentMove;
+
     }
 }
