@@ -18,10 +18,10 @@ public class EnemySpike : MonoBehaviour, IEnemyState
     [SerializeField] float pauseTime;
     [SerializeField] float spikeDuration;
     bool pausing;
+    [SerializeField] SpriteRenderer sprite;
 
     IEnumerator SummonSpike()
     {
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         sprite.color = Color.red;
         yield return new WaitForSeconds(timeBetweenSpikes);
         indicator = Instantiate(Indicator, targetPosition, Quaternion.identity, transform);
