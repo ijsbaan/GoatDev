@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1525114555122349619}
   - component: {fileID: 1024071319498804068}
   - component: {fileID: 4393393308617091523}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlockEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -166,9 +166,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1582991286891939067}
     m_Modifications:
+    - target: {fileID: 6139790285199715138, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6139790285820139980, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139790285820139980, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6139790285820139980, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
       propertyPath: m_IsActive
@@ -257,6 +265,10 @@ PrefabInstance:
     - target: {fileID: 6139790285820139981, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139790286347651838, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}

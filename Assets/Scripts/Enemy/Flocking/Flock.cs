@@ -1,7 +1,9 @@
 using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -27,6 +29,8 @@ public class Flock : MonoBehaviour
     [Range(0f, 1f)]
     public float avoidanceRadiusMultiplier = 1f;
 
+    [SerializeField] private LayerMask contextLayers;
+
 
     float squareMaxSpeed;
     float squareNeighbourRadius;
@@ -51,8 +55,8 @@ public class Flock : MonoBehaviour
     void Update()
     {
         if (agents.Count < maxChildren) counter++;
-        if(counter > 1000 && agents.Count < maxChildren)
-        { 
+        if (counter > 1000 && agents.Count < maxChildren)
+        {
             makeChildren();
             counter = 0;
         }
@@ -65,8 +69,8 @@ public class Flock : MonoBehaviour
             Vector2 move = behaviour.CalculateMove(agent, context, this);
 
             move *= driveFactor;
-            
-            if(move.sqrMagnitude > squareMaxSpeed)
+
+            if (move.sqrMagnitude > squareMaxSpeed)
             {
                 move = move.normalized * maxSpeed;
             }
@@ -88,10 +92,9 @@ public class Flock : MonoBehaviour
     {
         List<Transform> context = new List<Transform>();
         Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighbourRadius);
-            
-        foreach(Collider2D col in contextColliders)
+        foreach (Collider2D col in contextColliders)
         {
-            if(col != agent.AgentCollider)
+            if (col != agent.AgentCollider && (contextLayers & (1 << col.gameObject.layer)) != 0)
             {
                 context.Add(col.transform);
             }

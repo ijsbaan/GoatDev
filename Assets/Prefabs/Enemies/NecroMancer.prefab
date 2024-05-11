@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: -1525114555122349619, guid: 3bcb73a88f4b0cd4cb83365a0c06b17f, type: 3}
+  agents: []
   behaviour: {fileID: 11400000, guid: 074aa6292e7fbcf47bccc700c26131cf, type: 2}
   spawnChildren: 1
   maxChildren: 10
@@ -172,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 5193094997901931500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 22.7024, y: 14.0318, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5193094997040896206}
@@ -219,7 +220,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f4d90835b2b8a6e4690cc4dfd86262df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a1bae83b914f2d4f987600ca058e058, type: 3}
   m_Color: {r: 0.23137257, g: 0.14117648, b: 0.23137257, a: 1}
   m_FlipX: 0
   m_FlipY: 0
