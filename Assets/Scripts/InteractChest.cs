@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractObject : MonoBehaviour, Iinteractable
+public class InteractChest : MonoBehaviour, Iinteractable
 {
     [SerializeField] private GameObject camera;
     [SerializeField] private Transform player;
@@ -10,29 +10,17 @@ public class InteractObject : MonoBehaviour, Iinteractable
 
     private bool isInteracting;
    
-
     public void Interact()
     {
-
-        Debug.Log("interact");
-
         isInteracting = !isInteracting;
 
-        if (this.gameObject.tag == "Chest")
+        if (isInteracting)
         {
-            if (isInteracting)
-            {
-                camera.SetActive(true);
-            }
-
-            else
-                camera.SetActive(false);
+            camera.SetActive(true);
         }
 
-        if (this.gameObject.tag == " NPC")
-        {
-
-        }
+        else
+            camera.SetActive(false);
     }
 
 

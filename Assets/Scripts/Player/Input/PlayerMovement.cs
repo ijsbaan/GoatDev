@@ -28,9 +28,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isDash = false;
 
+    [HideInInspector] public bool canMove = true;
+
     [HideInInspector] public direction direction;
 
-    [HideInInspector] public bool cantMove;
     void Awake()
     {
         inputPlayer = new InputPlayer();
@@ -138,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if(canMove)
         HandleMovement();
     }
 }
