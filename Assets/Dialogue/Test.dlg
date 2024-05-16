@@ -1,0 +1,68 @@
+{
+    "dialogues": [
+        {
+            "id": "Example",
+            "text": "This is the text that will be said",
+            "options": [
+                {
+                    "id": "",
+                    "text": "First option",
+                    "next_dialogue": "Second"
+                },
+                {
+                    "id": "",
+                    "text": "another option",
+                    "next_dialogue": "Volgende"
+                }
+            ]
+        },
+        {
+            "id": "Second",
+            "text": "Second Dialogue",
+            "options": [
+                {
+                    "id": "",
+                    "text": "naar volgende",
+                    "next_dialogue": "Volgende"
+                }
+            ]
+        },
+        {
+            "id": "Volgende",
+            "text": "Dit is de volgende",
+            "options": [
+                {
+                    "id": "",
+                    "text": "Terug naar example",
+                    "next_dialogue": "Example"
+                },
+                {
+                    "id": "",
+                    "text": "another option",
+                    "next_dialogue": "Triple"
+                }
+            ]
+        },
+        {
+            "id": "Triple",
+            "text": "MEER BUTTONS",
+            "options": [
+                {
+                    "id": "",
+                    "text": "Terug naar example",
+                    "next_dialogue": "Example"
+                },
+                {
+                    "id": "",
+                    "text": "another option",
+                    "next_dialogue": ""
+                },
+                {
+                    "id": "",
+                    "text": "Hey Another Option",
+                    "next_dialogue": ""
+                }
+            ]
+        }
+    ]
+}
