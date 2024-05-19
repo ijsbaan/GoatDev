@@ -473,14 +473,6 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1606458764}
-    - target: {fileID: 1602690865517401025, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1602690865517401025, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3636925929500471868, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
       propertyPath: m_Name
       value: NPC
