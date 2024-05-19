@@ -24,7 +24,10 @@ public class DialogueDisplay : MonoBehaviour
 
     public void ShowDialogues()
     {
+        AddDialogueButton.SetActive(true);
+        DialogueDisplayList.SetActive(true);
         DialogueList dialogueList = fileHandler.ReadFile();
+        ClearDialogueList();
         foreach (var dialogue in dialogueList.dialogues)
         {
             DialogueEditButton button = Instantiate(DialogueEditButtonPrefab, DialogueDisplayList.transform);

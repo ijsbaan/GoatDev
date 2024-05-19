@@ -5,5 +5,5 @@ using TMPro;
 
 public class DropDownValue : TMP_Dropdown.OptionData
 {
-    public string Value {  get; set; }
+    public int Value {  get; set; }
 }

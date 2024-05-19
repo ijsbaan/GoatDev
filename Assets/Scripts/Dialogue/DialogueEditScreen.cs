@@ -62,10 +62,13 @@ public class DialogueEditScreen : EditScreen
 
     public void Submit()
     {
+        dialogue.name = NameArea.text;
         dialogue.text = DialogueArea.text;
         options = dialogue.options;
 
         fileHandler.UpdateDialogue(dialogue);
+        gameObject.SetActive(false);
+        EditScreenHandler.DialogueDisplay.ShowDialogues();
 
     }
 }

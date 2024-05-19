@@ -7,14 +7,14 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueOption
 {
-    public string id;
+    public int id;
     public string text;
     public string next_dialogue;
 }
 [System.Serializable]
 public class Dialogue
 {
-    public string id;
+    public int id;
     public string name;
     public string text;
     public List<DialogueOption> options;
@@ -41,18 +41,18 @@ public class DialogueFileHandler : MonoBehaviour
 
         Dialogue exampleDialogue = new()
         {
-            id = "1",
+            id = 1,
             name = "Example",
             text = "This is the text that will be said",
             options = new List<DialogueOption>
             {
-                new DialogueOption{ text= "First option",next_dialogue = "Second"} ,
+                new DialogueOption{ text= "First option",next_dialogue = "2"} ,
                 new DialogueOption{ text= "another option",next_dialogue = ""}
             }
         };
         Dialogue SecondDialogue = new()
         {
-            id = "2",
+            id = 2,
             name = "Second",
             text = "This is the text that will be said",
             options = new List<DialogueOption>
@@ -73,15 +73,12 @@ public class DialogueFileHandler : MonoBehaviour
         int maxId = 0;
         foreach (var dialogue in list.dialogues)
         {
-            // Attempt to parse the id as an integer
-            if (int.TryParse(dialogue.id, out int numericId))
-            {
+            int numericId = dialogue.id;
                 // Update maxId if a higher numeric id is found
                 if (numericId > maxId)
                 {
                     maxId = numericId;
                 }
-            }
         }
         return maxId;
     }
@@ -89,7 +86,7 @@ public class DialogueFileHandler : MonoBehaviour
     {
         DialogueList list = ReadFile();
         Dialogue dialogue = new();
-        dialogue.id = GetNewID().ToString();
+        dialogue.id = GetNewID();
 
         list.dialogues.Add(dialogue);
         WriteFile(list);
@@ -99,6 +96,7 @@ public class DialogueFileHandler : MonoBehaviour
     {
         DialogueList list = ReadFile();
         Dialogue oldDialogue = list.dialogues.Find(d => d.id == dialogue.id);
+        oldDialogue.name = dialogue.name;
         oldDialogue.text = dialogue.text;
         oldDialogue.options = dialogue.options;
         WriteFile(list);

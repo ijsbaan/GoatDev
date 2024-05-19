@@ -9,7 +9,7 @@ public class ReadFile : MonoBehaviour
     public DialogueFileHandler fileHandler;
     public string FileName;
 
-    public string FirstDialogueId;
+    public int FirstDialogueId;
 
     DialogueList list;
     public VerticalLayoutGroup options;
@@ -30,7 +30,7 @@ public class ReadFile : MonoBehaviour
 
     }
 
-    public void GenerateDialogue(string id)
+    public void GenerateDialogue(int id)
     {
         Dialogue dialogue = list.dialogues.Find(d => d.id == id);
         if (dialogue == null) return;
@@ -41,7 +41,7 @@ public class ReadFile : MonoBehaviour
             OptionButton optionbutton = Instantiate(buttonPrefab, options.transform);
             optionbutton.fileReader = this;
             optionbutton.textbox.text = option.text;
-            optionbutton.NextDialogueID = option.next_dialogue;
+            optionbutton.NextDialogueID = int.Parse(option.next_dialogue);
         }
     }
 

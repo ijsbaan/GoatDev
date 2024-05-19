@@ -8,7 +8,7 @@ public class OptionButton : MonoBehaviour
 {
     public TextMeshProUGUI textbox;
     public Button button;
-    public string NextDialogueID;
+    public int NextDialogueID;
 
     public ReadFile fileReader;
 
