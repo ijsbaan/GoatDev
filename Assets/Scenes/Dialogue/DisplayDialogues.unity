@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileHandler: {fileID: 404545223}
   FileName: Test
-  FirstDialogueId: Example
+  FirstDialogueId: 0
   options: {fileID: 838318857}
   DialogueTextBox: {fileID: 2002395738}
   buttonPrefab: {fileID: 263326752845845804, guid: 21448409585c10a45971183250c977bf, type: 3}
