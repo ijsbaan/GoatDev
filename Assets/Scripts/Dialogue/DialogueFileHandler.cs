@@ -15,6 +15,7 @@ public class DialogueOption
 public class Dialogue
 {
     public string id;
+    public string name;
     public string text;
     public List<DialogueOption> options;
 }
@@ -34,13 +35,14 @@ public class DialogueFileHandler : MonoBehaviour
 
 
 
-    public void CreateFile()
+    public void CreateTempFile()
     {
         DialogueList list = new();
 
         Dialogue exampleDialogue = new()
         {
-            id = "Example",
+            id = "1",
+            name = "Example",
             text = "This is the text that will be said",
             options = new List<DialogueOption>
             {
@@ -50,7 +52,8 @@ public class DialogueFileHandler : MonoBehaviour
         };
         Dialogue SecondDialogue = new()
         {
-            id = "Second",
+            id = "2",
+            name = "Second",
             text = "This is the text that will be said",
             options = new List<DialogueOption>
             {
@@ -63,10 +66,53 @@ public class DialogueFileHandler : MonoBehaviour
         File.WriteAllText(PATH + Filename + FILEEXTENSION, json);
     }
 
+    public int GetNewID()
+    {
+        DialogueList list = ReadFile();
+        // Find the highest existing numeric ID
+        int maxId = 0;
+        foreach (var dialogue in list.dialogues)
+        {
+            // Attempt to parse the id as an integer
+            if (int.TryParse(dialogue.id, out int numericId))
+            {
+                // Update maxId if a higher numeric id is found
+                if (numericId > maxId)
+                {
+                    maxId = numericId;
+                }
+            }
+        }
+        return maxId;
+    }
+    public void CreateNewDialogue()
+    {
+        DialogueList list = ReadFile();
+        Dialogue dialogue = new();
+        dialogue.id = GetNewID().ToString();
+
+        list.dialogues.Add(dialogue);
+        WriteFile(list);
+    }
+
+    public void UpdateDialogue(Dialogue dialogue)
+    {
+        DialogueList list = ReadFile();
+        Dialogue oldDialogue = list.dialogues.Find(d => d.id == dialogue.id);
+        oldDialogue.text = dialogue.text;
+        oldDialogue.options = dialogue.options;
+        WriteFile(list);
+    }
     public DialogueList ReadFile()
     {
         string json = File.ReadAllText(PATH + Filename + FILEEXTENSION);
         DialogueList list = JsonUtility.FromJson<DialogueList>(json);
         return list;
+    }
+
+    public void WriteFile(DialogueList list)
+    {
+        string json = JsonUtility.ToJson(list, true);
+        File.WriteAllText(PATH + Filename + FILEEXTENSION, json);
     }
 }

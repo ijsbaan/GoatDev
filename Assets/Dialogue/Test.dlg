@@ -1,56 +1,60 @@
 {
     "dialogues": [
         {
-            "id": "Example",
+            "id": "0",
+            "name": "Example",
             "text": "This is the text that will be said",
             "options": [
                 {
                     "id": "",
                     "text": "First option",
-                    "next_dialogue": "Second"
+                    "next_dialogue": "1"
                 },
                 {
                     "id": "",
                     "text": "another option",
-                    "next_dialogue": "Volgende"
+                    "next_dialogue": "2"
                 }
             ]
         },
         {
-            "id": "Second",
+            "id": "1",
+            "name": "Second",
             "text": "Second Dialogue",
             "options": [
                 {
                     "id": "",
                     "text": "naar volgende",
-                    "next_dialogue": "Volgende"
+                    "next_dialogue": "2"
                 }
             ]
         },
         {
-            "id": "Volgende",
+            "id": "2",
+            "name": "Volgende",
             "text": "Dit is de volgende",
             "options": [
                 {
                     "id": "",
                     "text": "Terug naar example",
-                    "next_dialogue": "Example"
+                    "next_dialogue": "0"
                 },
                 {
                     "id": "",
                     "text": "another option",
-                    "next_dialogue": "Triple"
+                    "next_dialogue": "3"
                 }
             ]
         },
         {
-            "id": "Triple",
-            "text": "MEER BUTTONS",
+            "id": "3",
+            "name": "Triple",
+            "text": "MEER BUTTONS TRIPLE TIMING",
             "options": [
                 {
                     "id": "",
                     "text": "Terug naar example",
-                    "next_dialogue": "Example"
+                    "next_dialogue": "0"
                 },
                 {
                     "id": "",
@@ -63,6 +67,18 @@
                     "next_dialogue": ""
                 }
             ]
+        },
+        {
+            "id": "4",
+            "name": "",
+            "text": "",
+            "options": []
+        },
+        {
+            "id": "5",
+            "name": "",
+            "text": "",
+            "options": []
         }
     ]
 }

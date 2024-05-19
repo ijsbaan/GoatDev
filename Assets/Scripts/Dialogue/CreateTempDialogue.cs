@@ -10,6 +10,6 @@ public class CreateTempDialogue : MonoBehaviour
     void Start()
     {
         fileHandler.Filename = FileName;
-        fileHandler.CreateFile();
+        fileHandler.CreateTempFile();
     }
 }
