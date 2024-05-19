@@ -124,6 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8b4922ea41c1d4887fde8e9ef26cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
   DestroyAfterHit: 0
   Tag: Enemy

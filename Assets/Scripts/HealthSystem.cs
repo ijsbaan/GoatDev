@@ -19,7 +19,7 @@ public class HealthSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(healthAmount <= 0)
+        if (healthAmount <= 0)
         {
             Death();
         }
@@ -31,9 +31,14 @@ public class HealthSystem : MonoBehaviour
         SetHealth(GetHealthNormalized());
     }
 
-
     public void Death()
     {
+
+        if (GetComponent<FlockAgent>() != null)
+        {
+            FlockAgent flock = GetComponent<FlockAgent>();
+            flock.Death();
+        }
         GameObject.Destroy(affectedObject);
     }
 

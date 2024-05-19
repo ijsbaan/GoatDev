@@ -7,6 +7,7 @@ public class FlockAgent : MonoBehaviour
 {
     Collider2D agentCollider;
     public Collider2D AgentCollider { get { return agentCollider;} }
+    public Flock Owner;
     // Start is called before the first frame update
     void Start()
     {   
@@ -17,5 +18,10 @@ public class FlockAgent : MonoBehaviour
     {
         transform.up = velocity;
         transform.position += (Vector3) velocity * Time.deltaTime;
+    }
+
+    public void Death()
+    {
+        Owner.agents.Remove(this);
     }
 }
