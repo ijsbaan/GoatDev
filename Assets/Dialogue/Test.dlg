@@ -1,0 +1,84 @@
+{
+    "dialogues": [
+        {
+            "id": 0,
+            "name": "Example",
+            "text": "This is the text that will be said",
+            "options": [
+                {
+                    "id": 0,
+                    "text": "First option",
+                    "next_dialogue": "1"
+                },
+                {
+                    "id": 0,
+                    "text": "another option",
+                    "next_dialogue": "2"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Second",
+            "text": "Second Dialogue",
+            "options": [
+                {
+                    "id": 0,
+                    "text": "naar volgende",
+                    "next_dialogue": "2"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Volgende",
+            "text": "Dit is de volgende",
+            "options": [
+                {
+                    "id": 0,
+                    "text": "Terug naar example",
+                    "next_dialogue": "0"
+                },
+                {
+                    "id": 0,
+                    "text": "another option",
+                    "next_dialogue": "3"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Triple",
+            "text": "MEER BUTTONS TRIPLE TIMING",
+            "options": [
+                {
+                    "id": 0,
+                    "text": "Terug naar example",
+                    "next_dialogue": "0"
+                },
+                {
+                    "id": 0,
+                    "text": "another option",
+                    "next_dialogue": ""
+                },
+                {
+                    "id": 0,
+                    "text": "Hey Another Option",
+                    "next_dialogue": ""
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Butt Test",
+            "text": "BUTTS BUTTS BUTTS BUTTS",
+            "options": []
+        },
+        {
+            "id": 5,
+            "name": "this bitch empty",
+            "text": "",
+            "options": []
+        }
+    ]
+}
