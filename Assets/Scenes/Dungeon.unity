@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 1756857740}
   - component: {fileID: 1756857739}
   - component: {fileID: 1756857738}
+  - component: {fileID: 1756857742}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -45954,13 +45955,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756857737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.4693, y: -12.8, z: 0}
+  m_LocalPosition: {x: -28.1, y: -12.7, z: 0}
   m_LocalScale: {x: 0.998, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &1756857742
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756857737}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
 --- !u!1001 &2135920824
 PrefabInstance:
   m_ObjectHideFlags: 0
