@@ -1,0 +1,27 @@
+{
+    "dialogues": [
+        {
+            "id": 0,
+            "name": "TutorialGreeting",
+            "text": "Greetings friend, you seem to be new.\nI can give you some tips",
+            "options": [
+                {
+                    "id": 0,
+                    "text": "Yes please",
+                    "next_dialogue": "1"
+                },
+                {
+                    "id": 0,
+                    "text": "No thank you",
+                    "next_dialogue": "0"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Movement Instruction",
+            "text": "First let's run around, use WASD if keyboard or move that joystick around",
+            "options": []
+        }
+    ]
+}

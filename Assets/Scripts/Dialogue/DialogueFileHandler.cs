@@ -28,7 +28,6 @@ public class DialogueList
 
 public class DialogueFileHandler : MonoBehaviour
 {
-    [HideInInspector]
     public string Filename;
     public static string PATH = "Assets/Dialogue/";
     public static string FILEEXTENSION = ".dlg";
@@ -41,7 +40,7 @@ public class DialogueFileHandler : MonoBehaviour
 
         Dialogue exampleDialogue = new()
         {
-            id = 1,
+            id = 0,
             name = "Example",
             text = "This is the text that will be said",
             options = new List<DialogueOption>
@@ -52,7 +51,7 @@ public class DialogueFileHandler : MonoBehaviour
         };
         Dialogue SecondDialogue = new()
         {
-            id = 2,
+            id = 1,
             name = "Second",
             text = "This is the text that will be said",
             options = new List<DialogueOption>
@@ -103,6 +102,11 @@ public class DialogueFileHandler : MonoBehaviour
     }
     public DialogueList ReadFile()
     {
+        if(!File.Exists(PATH + Filename + FILEEXTENSION))
+        {
+                CreateTempFile();
+                ReadFile();
+        }
         string json = File.ReadAllText(PATH + Filename + FILEEXTENSION);
         DialogueList list = JsonUtility.FromJson<DialogueList>(json);
         return list;

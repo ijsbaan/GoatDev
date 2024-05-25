@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ReadFile : MonoBehaviour
 {
     public DialogueFileHandler fileHandler;
-    public string FileName;
 
     public int FirstDialogueId;
 
@@ -16,12 +15,16 @@ public class ReadFile : MonoBehaviour
     public TextMeshProUGUI DialogueTextBox;
     [HideInInspector]
     public OptionButton buttonPrefab;
+    [SerializeField]
+    private bool ReadAtStart;
     // Start is called before the first frame update
     void Start()
     {
-        fileHandler.Filename = FileName;
-        list = fileHandler.ReadFile();
-        GenerateDialogue(FirstDialogueId);
+        if(ReadAtStart)
+        {
+            list = fileHandler.ReadFile();
+            GenerateDialogue(FirstDialogueId);
+        }
     }
 
     // Update is called once per frame
