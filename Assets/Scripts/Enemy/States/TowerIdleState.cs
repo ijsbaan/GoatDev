@@ -23,6 +23,7 @@ public class TowerIdleState : IdleState
             attackState.target = target;
             attackState.detectionRadius = config.detectionRadius;
             attackState.idle = this;
+            attackState.enemyController = enemyController;
             enemyController.ChangeState(attackState);
         }
     }

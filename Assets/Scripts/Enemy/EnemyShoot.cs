@@ -12,10 +12,6 @@ public class EnemyShoot : AttackState, IEnemyState
     [SerializeField] bool shootBullet;
     [SerializeField] float timeBetweenShots;
 
-    public EnemyShoot(EnemyController controller, AttackType type) : base(controller, type)
-    {
-    }
-
     IEnumerator shootAtTarget()
     {
         ShootAtPosition(targetPosition);
@@ -55,6 +51,5 @@ public class EnemyShoot : AttackState, IEnemyState
 
     public override void ExitState()
     {
-        throw new NotImplementedException();
     }
 }

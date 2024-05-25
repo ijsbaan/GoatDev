@@ -18,7 +18,7 @@ public enum EnemyType
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private IEnemyState currentState;
+    [SerializeField] public IEnemyState currentState;
     [SerializeField] EnemyType enemyType;
     [SerializeField] public GameObject enemyObject;
     [SerializeField] IdleConfig idleConfig;
@@ -47,8 +47,7 @@ public class EnemyController : MonoBehaviour
                 ChangeState(new TowerIdleState(this, enemyType, idleConfig, attackBehavior));
                 break;
             case EnemyType.dryad:
-                EnemySpike spikeComponent = GetComponent<EnemySpike>();
-                ChangeState(new DryadIdleState(this, enemyType, idleConfig, spikeComponent));
+                ChangeState(new DryadIdleState(this, enemyType, idleConfig, attackBehavior));
                 break;
         }
     }

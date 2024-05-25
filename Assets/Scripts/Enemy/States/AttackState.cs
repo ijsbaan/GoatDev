@@ -4,18 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 public class AttackState : MonoBehaviour, IEnemyState
 {
-    private readonly EnemyController enemyController;
-    private readonly AttackType attackType;
+    public EnemyController enemyController;
     public GameObject target;
     public float detectionRadius;
     bool playerNear;
     public IdleState idle;
-
-    public AttackState(EnemyController controller, AttackType type)
-    {
-        enemyController = controller;
-        attackType = type;
-    }
 
     public virtual void EnterState()
     {
@@ -36,9 +29,12 @@ public class AttackState : MonoBehaviour, IEnemyState
             }
         }
         playerNear = playerDetected;
-
+        if (playerDetected && enemyController.currentState != this)
+        {
+            enemyController.ChangeState(this);
+        }
         // If the player is not near, change the state to idle
-        if (!playerNear)
+        if (!playerNear && enemyController.currentState != idle)
         {
             enemyController.ChangeState(idle);
         }
