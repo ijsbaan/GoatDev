@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Necro
   m_EditorClassIdentifier: 
   attackCheckMethod: 0
-  idleDuration: 3
+  idleDuration: 2
   detectionRadius: 0
