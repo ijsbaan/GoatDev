@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+public enum AttackCheckMethod
+{
+    TimerBased,
+    DetectionBased
+}
 
 public class IdleState : IEnemyState
 {
     private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
     private float idleTimer = 0f;
-    private float idleDuration = 5f;
+    private IdleConfig config;
 
-    public IdleState(EnemyController controller,EnemyType type)
+    public IdleState(EnemyController controller, EnemyType type, IdleConfig config)
     {
         enemyController = controller;
         enemyType = type;
+        this.config = config;
     }
 
     public virtual void EnterState()
@@ -22,13 +30,27 @@ public class IdleState : IEnemyState
 
     public virtual void UpdateState()
     {
-        // Implement idle behavior here (e.g., patrol, look around, etc.)
-        idleTimer += Time.deltaTime;
-
-        // Example: If idle duration is reached, transition to another state (e.g., AttackState)
-        if (idleTimer >= idleDuration)
+        if (config.attackCheckMethod == AttackCheckMethod.TimerBased)
         {
-            Attack();
+            // Implement idle behavior here (e.g., patrol, look around, etc.)
+            idleTimer += Time.deltaTime;
+
+            // Example: If idle duration is reached, transition to another state (e.g., AttackState)
+            if (idleTimer >= config.idleDuration)
+            {
+                Attack();
+            }
+        }
+        if (config.attackCheckMethod == AttackCheckMethod.DetectionBased)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(enemyController.gameObject.transform.position, config.detectionRadius);
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.GetComponent<PlayerMovement>())
+                {
+                    Attack(collider.gameObject);
+                }
+            }
         }
 
 
@@ -42,6 +64,10 @@ public class IdleState : IEnemyState
     }
 
     public virtual void Attack()
+    {
+
+    }
+    public virtual void Attack(GameObject target)
     {
 
     }

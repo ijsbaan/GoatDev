@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class AttackState : IEnemyState
+using UnityEngine.InputSystem.XR;
+public class AttackState : MonoBehaviour, IEnemyState
 {
     private readonly EnemyController enemyController;
     private readonly AttackType attackType;
+    public GameObject target;
+    public float detectionRadius;
+    bool playerNear;
+    public IdleState idle;
 
     public AttackState(EnemyController controller, AttackType type)
     {
@@ -12,19 +17,34 @@ public class AttackState : IEnemyState
         attackType = type;
     }
 
-    public void EnterState()
+    public virtual void EnterState()
     {
 
     }
 
-    public void UpdateState()
+    public virtual void UpdateState()
     {
-        // Attack state update behavior
+        // Check if the player is within the detection radius
+        bool playerDetected = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider == target.GetComponent<Collider2D>())
+            {
+                playerDetected = true;
+                break;
+            }
+        }
+        playerNear = playerDetected;
 
-        //shoot.ShootAtPosition(new Vector3(0,0,0));
+        // If the player is not near, change the state to idle
+        if (!playerNear)
+        {
+            enemyController.ChangeState(idle);
+        }
     }
 
-    public void ExitState()
+    public virtual void ExitState()
     {
         // Exit attack state behavior
     }
