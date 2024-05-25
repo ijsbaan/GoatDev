@@ -7,7 +7,7 @@ using static UnityEditor.FilePathAttribute;
 public class EnemyShoot : MonoBehaviour, IEnemyState
 {
     [SerializeField] GameObject Projectile;
-    float zPos = 2;
+    float zPos = 1;
     [SerializeField] Vector2 targetPosition;
     [SerializeField] bool shootBullet;
     [SerializeField] float timeBetweenShots;
