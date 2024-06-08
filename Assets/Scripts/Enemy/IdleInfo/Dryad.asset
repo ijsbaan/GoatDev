@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117a6267b6ffc064ba2b2e3507c9592d, type: 3}
   m_Name: Dryad
   m_EditorClassIdentifier: 
-  attackCheckMethod: 1
-  idleDuration: 0
+  attackCheckMethod: 0
+  idleDuration: 3
   detectionRadius: 10

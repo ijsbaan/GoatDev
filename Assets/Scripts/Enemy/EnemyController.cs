@@ -23,13 +23,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public GameObject enemyObject;
     [SerializeField] IdleConfig idleConfig;
     [SerializeField] AttackState attackBehavior;
-    
+    [SerializeField] PlayerDetector playerDetector;
+
 
     // Set the initial state (e.g., in Start() method)
     private void Start()
     {
         SetInitialState();
-
     }
 
     private void SetInitialState()
@@ -38,16 +38,16 @@ public class EnemyController : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.basic:
-                ChangeState(new IdleState(this, enemyType, idleConfig));
+                ChangeState(new IdleState(this, enemyType, idleConfig, playerDetector));
                 break;
             case EnemyType.flocking:
-                ChangeState(new FlockingIdleState(this, enemyType, idleConfig));
+                ChangeState(new FlockingIdleState(this, enemyType, idleConfig, playerDetector));
                 break;
             case EnemyType.tower:
-                ChangeState(new TowerIdleState(this, enemyType, idleConfig, attackBehavior));
+                ChangeState(new TowerIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
                 break;
             case EnemyType.dryad:
-                ChangeState(new DryadIdleState(this, enemyType, idleConfig, attackBehavior));
+                ChangeState(new DryadIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
                 break;
         }
     }
@@ -59,6 +59,7 @@ public class EnemyController : MonoBehaviour
         {
             currentState.UpdateState();
         }
+        Debug.Log(currentState.ToString());
     }
 
     public void ChangeState(IEnemyState newState)

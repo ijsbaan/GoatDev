@@ -8,7 +8,7 @@ public class TowerIdleState : IdleState
     private readonly EnemyType enemyType;
     private AttackState attackState;
     private IdleConfig config;
-    public TowerIdleState(EnemyController controller, EnemyType type, IdleConfig config, AttackState attackBehavior) : base(controller, type, config)
+    public TowerIdleState(EnemyController controller, EnemyType type, IdleConfig config, PlayerDetector playerDetector, AttackState attackBehavior) : base(controller, type, config, playerDetector)
     {
         enemyController = controller;
         enemyType = type;

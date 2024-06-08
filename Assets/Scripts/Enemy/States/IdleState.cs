@@ -15,12 +15,15 @@ public class IdleState : IEnemyState
     private readonly EnemyType enemyType;
     private float idleTimer = 0f;
     private IdleConfig config;
+    protected PlayerDetector detection;
+    bool inAttackingState;
 
-    public IdleState(EnemyController controller, EnemyType type, IdleConfig config)
+    public IdleState(EnemyController controller, EnemyType type, IdleConfig config, PlayerDetector playerDetector)
     {
         enemyController = controller;
         enemyType = type;
         this.config = config;
+        detection = playerDetector;
     }
 
     public virtual void EnterState()
@@ -43,13 +46,24 @@ public class IdleState : IEnemyState
         }
         if (config.attackCheckMethod == AttackCheckMethod.DetectionBased)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(enemyController.gameObject.transform.position, config.detectionRadius);
-            foreach (Collider2D collider in colliders)
+            //Collider2D[] colliders = Physics2D.OverlapCircleAll(enemyController.gameObject.transform.position, config.detectionRadius);
+            //foreach (Collider2D collider in colliders)
+            //{
+            //    if (collider.GetComponent<PlayerMovement>())
+            //    {
+            //        Attack(collider.gameObject);
+            //    }
+            //}
+            if (detection.PlayerDetected && !inAttackingState)
             {
-                if (collider.GetComponent<PlayerMovement>())
-                {
-                    Attack(collider.gameObject);
-                }
+                if(detection.Player != null)
+                Attack(detection.Player);
+                inAttackingState = true;
+            }
+            if (!detection.PlayerDetected)
+            {
+                inAttackingState = false;
+                enemyController.ChangeState(this);
             }
         }
 

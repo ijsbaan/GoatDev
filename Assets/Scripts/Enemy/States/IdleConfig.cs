@@ -9,5 +9,6 @@ public class IdleConfig : ScriptableObject
     public AttackCheckMethod attackCheckMethod;
     public float idleDuration;
     public float detectionRadius;
+    
 }
 

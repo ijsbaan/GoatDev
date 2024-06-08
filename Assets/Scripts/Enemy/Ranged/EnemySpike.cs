@@ -10,6 +10,7 @@ public class EnemySpike : AttackState, IEnemyState
     [SerializeField] GameObject Projectile;
     [SerializeField] GameObject Indicator;
     GameObject indicator;
+    GameObject spike;
     public GameObject player;
     private Vector3 targetPosition;
     [SerializeField] bool spawnSpike;
@@ -25,11 +26,10 @@ public class EnemySpike : AttackState, IEnemyState
         sprite.color = Color.red;
         yield return new WaitForSeconds(timeBetweenSpikes);
         indicator = Instantiate(Indicator, targetPosition, Quaternion.identity, transform);
-        Vector3 previousPos = indicator.transform.position;
         yield return new WaitForSeconds(timeTillSpike);
         pausing = true;
         yield return new WaitForSeconds(pauseTime);
-        var spike = Instantiate(Projectile, indicator.transform.position, Quaternion.identity, transform);
+        spike = Instantiate(Projectile, indicator.transform.position, Quaternion.identity, transform);
         Destroy(indicator);
         pausing = false;
         spawnSpike = true;
@@ -62,6 +62,16 @@ public class EnemySpike : AttackState, IEnemyState
 
     public override void ExitState()
     {
-
+        spawnSpike = false;
+        StopAllCoroutines();
+        sprite.color = Color.green;
+        if(indicator != null)
+        {
+            Destroy(indicator); indicator = null;
+        }
+        if(spike != null)
+        {
+            Destroy(spike); spike = null;
+        }
     }
 }

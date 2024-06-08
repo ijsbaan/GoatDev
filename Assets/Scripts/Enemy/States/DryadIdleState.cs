@@ -8,7 +8,7 @@ public class DryadIdleState : IdleState
     private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
     private AttackState spikeComponent;
-    public DryadIdleState(EnemyController controller, EnemyType type, IdleConfig config, AttackState attackBehavior) : base(controller, type, config)
+    public DryadIdleState(EnemyController controller, EnemyType type, IdleConfig config, PlayerDetector playerDetector, AttackState attackBehavior) : base(controller, type, config, playerDetector)
     {
         enemyController = controller;
         enemyType = type;
@@ -23,6 +23,7 @@ public class DryadIdleState : IdleState
             enemyController.ChangeState(spikeComponent);
             spikeComponent.idle = this;
             spikeComponent.enemyController = enemyController;
+            spikeComponent.playerDetector = detection;
             spikeComponent.target = target;
         }
     }

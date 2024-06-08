@@ -13,7 +13,7 @@ public class FlockingIdleState : IdleState
         base.EnterState();
         enemyController.GetComponent<Flock>().enabled = false;
     }
-    public FlockingIdleState(EnemyController controller, EnemyType type, IdleConfig config) : base(controller, type, config)
+    public FlockingIdleState(EnemyController controller, EnemyType type, IdleConfig config, PlayerDetector playerDetector) : base(controller, type, config, playerDetector)
     {
         enemyController = controller;
         enemyType = type;
