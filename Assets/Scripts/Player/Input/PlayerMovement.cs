@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(canMove)
         HandleMovement();
