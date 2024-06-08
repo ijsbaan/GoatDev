@@ -462,6 +462,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e85bdec4247a67499401c784555f6fc, type: 3}
+--- !u!1 &1809653478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3636925929903111268, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
+  m_PrefabInstance: {fileID: 3636925929492128733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1809653480
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809653478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf666daca91b07f4e85dd9aa53db61f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!20 &2124408937 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2202693980110233802, guid: dec28db457f909a40b800699a383e760, type: 3}
@@ -525,6 +550,14 @@ PrefabInstance:
     - target: {fileID: 3636925929500471871, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636925929903111270, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2166633c8bcf22f428f53e99c7fa75ad, type: 3}
+    - target: {fileID: 3636925929903111270, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4151401244305823405, guid: 9b45724d48ad1384f8eef365c24c5446, type: 3}
       propertyPath: m_Camera
