@@ -11,10 +11,22 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private GameObject affectedObject;
 
+    [SerializeField] private bool cantKnockBack;
+
+
+    private Transform damageCollider;
+    private Rigidbody2D rb;
+
+    public float knockbackTime = 0.2f;
+    public float hitDirectionForce = 10f;
+    public float constForce = 5f;
+    public float inputForce = 7.5f;
+
     private void Awake()
     {
         healthAmount = maxHealth;
         SetHealth(GetHealthNormalized());
+        rb = GetComponentInParent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -25,10 +37,16 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    public void RemoveHealth(float removeAmount)
+    public void RemoveHealth(float removeAmount, Transform damage)
     {
+        damageCollider = damage;
         healthAmount -= removeAmount;
         SetHealth(GetHealthNormalized());
+
+        if(!cantKnockBack)
+        {
+            KnockBack(damageCollider);
+        }
     }
 
     public void Death()
@@ -62,4 +80,36 @@ public class HealthSystem : MonoBehaviour
     {
         barImage.fillAmount = healthNormalized;
     }
+    private void KnockBack(Transform objectTransform)
+    {
+        Vector2 distance = this.transform.position - objectTransform.position;
+
+        StartCoroutine(CallKnockBack(distance, new Vector2(1, 1)));
+    }
+
+    private IEnumerator CallKnockBack(Vector2 hitDirection, Vector2 constantForceDirection)
+    {
+        float elapsedTime = 0;
+
+        Vector2 hitForce;
+        Vector2 constantForce;
+        Vector2 combinedForce;
+
+        hitForce = hitDirection * hitDirectionForce;
+        constantForce = constantForceDirection * constForce;
+
+        while (elapsedTime < knockbackTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            combinedForce = hitForce ;
+
+            rb.velocity = combinedForce;
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        rb.velocity = Vector2.zero;
+    }
+
 }

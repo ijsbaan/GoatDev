@@ -14,7 +14,7 @@ public class DamageColliderByTag : MonoBehaviour
         if (other.CompareTag(Tag))
         {
             var health = other.gameObject.GetComponent<HealthSystem>();
-            health.RemoveHealth(damage);
+            health.RemoveHealth(damage, this.gameObject.transform);
             if (DestroyAfterHit)
             {
                 Destroy(this.gameObject);

@@ -36,7 +36,7 @@ public class AttackMonsterTemp : MonoBehaviour
         }
 
         float distanceToTarget = Vector2.Distance(transform.position, target.position);
-        Debug.Log(target.position);
+
         if (counter >= timer)
         {
             StartCoroutine(Attack());
