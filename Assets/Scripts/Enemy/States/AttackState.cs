@@ -1,30 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class AttackState : IEnemyState
+using UnityEngine.InputSystem.XR;
+public class AttackState : MonoBehaviour, IEnemyState
 {
-    private readonly EnemyController enemyController;
-    private readonly AttackType attackType;
+    public EnemyController enemyController;
+    public GameObject target;
+    public float detectionRadius;
+    public PlayerDetector playerDetector;
+    public IdleState idle;
 
-    public AttackState(EnemyController controller, AttackType type)
-    {
-        enemyController = controller;
-        attackType = type;
-    }
-
-    public void EnterState()
+    public virtual void EnterState()
     {
 
     }
 
-    public void UpdateState()
+    public virtual void UpdateState()
     {
-        // Attack state update behavior
-
-        //shoot.ShootAtPosition(new Vector3(0,0,0));
+        if (!playerDetector.PlayerDetected)
+        {
+            enemyController.ChangeState(idle);
+        }
     }
 
-    public void ExitState()
+    public virtual void ExitState()
     {
         // Exit attack state behavior
     }
