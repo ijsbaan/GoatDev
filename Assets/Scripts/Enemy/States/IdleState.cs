@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,27 +9,28 @@ public enum AttackCheckMethod
     TimerBased,
     DetectionBased
 }
-
 public class IdleState : IEnemyState
 {
+    private AttackState attackState;
     private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
     private float idleTimer = 0f;
     private IdleConfig config;
     protected PlayerDetector detection;
     bool inAttackingState;
-
-    public IdleState(EnemyController controller, EnemyType type, IdleConfig config, PlayerDetector playerDetector)
+    public IdleState(EnemyController controller, EnemyType type, IdleConfig config, PlayerDetector playerDetector, AttackState attackState)
     {
         enemyController = controller;
         enemyType = type;
         this.config = config;
         detection = playerDetector;
+        this.attackState = attackState;
     }
 
     public virtual void EnterState()
     {
         // Enter idle state behavior
+        detection.DetectionRadius = config.detectionRadius;
     }
 
     public virtual void UpdateState()
@@ -56,8 +58,8 @@ public class IdleState : IEnemyState
             //}
             if (detection.PlayerDetected && !inAttackingState)
             {
-                if(detection.Player != null)
-                Attack(detection.Player);
+                if (detection.Player != null)
+                    Attack(detection.Player);
                 inAttackingState = true;
             }
             if (!detection.PlayerDetected)
@@ -79,10 +81,19 @@ public class IdleState : IEnemyState
 
     public virtual void Attack()
     {
-
+        if (attackState != null)
+            enemyController.ChangeState(attackState);
     }
     public virtual void Attack(GameObject target)
     {
+        if (attackState != null)
+        {
+            attackState.target = target;
+            attackState.playerDetector = detection;
+            attackState.idle = this;
+            attackState.enemyController = enemyController;
+            enemyController.ChangeState(attackState);
+        }
 
     }
 

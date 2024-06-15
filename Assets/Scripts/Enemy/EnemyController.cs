@@ -34,21 +34,13 @@ public class EnemyController : MonoBehaviour
 
     private void SetInitialState()
     {
-        // Depending on enemyType, set the initial state
-        switch (enemyType)
+        if (enemyType == EnemyType.flocking)
         {
-            case EnemyType.basic:
-                ChangeState(new IdleState(this, enemyType, idleConfig, playerDetector));
-                break;
-            case EnemyType.flocking:
-                ChangeState(new FlockingIdleState(this, enemyType, idleConfig, playerDetector));
-                break;
-            case EnemyType.tower:
-                ChangeState(new TowerIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
-                break;
-            case EnemyType.dryad:
-                ChangeState(new DryadIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
-                break;
+            ChangeState(new FlockingIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
+        }
+        else
+        {
+            ChangeState(new IdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
         }
     }
 

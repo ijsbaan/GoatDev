@@ -6,7 +6,6 @@ public class AttackState : MonoBehaviour, IEnemyState
 {
     public EnemyController enemyController;
     public GameObject target;
-    public float detectionRadius;
     public PlayerDetector playerDetector;
     public IdleState idle;
 
