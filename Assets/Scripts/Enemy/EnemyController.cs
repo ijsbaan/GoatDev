@@ -18,16 +18,18 @@ public enum EnemyType
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private IEnemyState currentState;
+    [SerializeField] public IEnemyState currentState;
     [SerializeField] EnemyType enemyType;
     [SerializeField] public GameObject enemyObject;
-    
+    [SerializeField] IdleConfig idleConfig;
+    [SerializeField] AttackState attackBehavior;
+    [SerializeField] PlayerDetector playerDetector;
+
 
     // Set the initial state (e.g., in Start() method)
     private void Start()
     {
         SetInitialState();
-
     }
 
     private void SetInitialState()
@@ -36,27 +38,16 @@ public class EnemyController : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.basic:
-                ChangeState(new IdleState(this, enemyType));
+                ChangeState(new IdleState(this, enemyType, idleConfig, playerDetector));
                 break;
             case EnemyType.flocking:
-                ChangeState(new FlockingIdleState(this, enemyType));
+                ChangeState(new FlockingIdleState(this, enemyType, idleConfig, playerDetector));
                 break;
             case EnemyType.tower:
-                // For tower type, transition to the EnemyShoot state
-                EnemyShoot enemyShootComponent = GetComponent<EnemyShoot>();
-                if (enemyShootComponent != null)
-                {
-                    ChangeState(enemyShootComponent);
-                }
-                else
-                {
-                    Debug.LogWarning("EnemyShoot component not found on the tower type enemy.");
-                    // Handle if EnemyShoot component is not found
-                }
+                ChangeState(new TowerIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
                 break;
             case EnemyType.dryad:
-                EnemySpike spikeComponent = GetComponent<EnemySpike>();
-                ChangeState(new DryadIdleState(this, enemyType, spikeComponent));
+                ChangeState(new DryadIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
                 break;
         }
     }
@@ -68,6 +59,7 @@ public class EnemyController : MonoBehaviour
         {
             currentState.UpdateState();
         }
+        Debug.Log(currentState.ToString());
     }
 
     public void ChangeState(IEnemyState newState)
@@ -79,5 +71,11 @@ public class EnemyController : MonoBehaviour
 
         currentState = newState;
         currentState.EnterState();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, idleConfig.detectionRadius);
     }
 }

@@ -7,8 +7,8 @@ public class DryadIdleState : IdleState
 
     private readonly EnemyController enemyController;
     private readonly EnemyType enemyType;
-    private EnemySpike spikeComponent;
-    public DryadIdleState(EnemyController controller, EnemyType type, EnemySpike attackBehavior) : base(controller, type)
+    private AttackState spikeComponent;
+    public DryadIdleState(EnemyController controller, EnemyType type, IdleConfig config, PlayerDetector playerDetector, AttackState attackBehavior) : base(controller, type, config, playerDetector)
     {
         enemyController = controller;
         enemyType = type;
@@ -16,11 +16,15 @@ public class DryadIdleState : IdleState
     }
 
 
-    public override void Attack()
+    public override void Attack(GameObject target)
     {
         if (spikeComponent != null)
         {
             enemyController.ChangeState(spikeComponent);
+            spikeComponent.idle = this;
+            spikeComponent.enemyController = enemyController;
+            spikeComponent.playerDetector = detection;
+            spikeComponent.target = target;
         }
     }
 

@@ -5,12 +5,13 @@ using TMPro;
 using UnityEngine;
 using static UnityEditor.FilePathAttribute;
 
-public class EnemySpike : MonoBehaviour, IEnemyState
+public class EnemySpike : AttackState, IEnemyState
 {
     [SerializeField] GameObject Projectile;
     [SerializeField] GameObject Indicator;
     GameObject indicator;
-    [SerializeField] PlayerMovement player;
+    GameObject spike;
+    public GameObject player;
     private Vector3 targetPosition;
     [SerializeField] bool spawnSpike;
     [SerializeField] float timeBetweenSpikes;
@@ -25,11 +26,10 @@ public class EnemySpike : MonoBehaviour, IEnemyState
         sprite.color = Color.red;
         yield return new WaitForSeconds(timeBetweenSpikes);
         indicator = Instantiate(Indicator, targetPosition, Quaternion.identity, transform);
-        Vector3 previousPos = indicator.transform.position;
         yield return new WaitForSeconds(timeTillSpike);
         pausing = true;
         yield return new WaitForSeconds(pauseTime);
-        var spike = Instantiate(Projectile, indicator.transform.position, Quaternion.identity, transform);
+        spike = Instantiate(Projectile, indicator.transform.position, Quaternion.identity, transform);
         Destroy(indicator);
         pausing = false;
         spawnSpike = true;
@@ -37,15 +37,16 @@ public class EnemySpike : MonoBehaviour, IEnemyState
         Destroy(spike);
     }
 
-    public void EnterState()
+    public override void EnterState()
     {
-        player = FindAnyObjectByType<PlayerMovement>();
         spawnSpike = true;
         pausing = false;
+        player = target;
     }
 
-    public void UpdateState()
+    public override void UpdateState()
     {
+        base.UpdateState();
         if (spawnSpike)
         {
             spawnSpike = false;
@@ -59,8 +60,18 @@ public class EnemySpike : MonoBehaviour, IEnemyState
         }
     }
 
-    public void ExitState()
+    public override void ExitState()
     {
-        throw new NotImplementedException();
+        spawnSpike = false;
+        StopAllCoroutines();
+        sprite.color = Color.green;
+        if(indicator != null)
+        {
+            Destroy(indicator); indicator = null;
+        }
+        if(spike != null)
+        {
+            Destroy(spike); spike = null;
+        }
     }
 }
