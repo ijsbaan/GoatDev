@@ -2,19 +2,7 @@ using UnityEngine;
 
 
 
-public enum AttackType
-{
-    melee,
-    ranged
-}
 
-public enum EnemyType
-{
-    basic,
-    flocking,
-    tower,
-    dryad
-}
 
 public class EnemyController : MonoBehaviour
 {
@@ -34,14 +22,8 @@ public class EnemyController : MonoBehaviour
 
     private void SetInitialState()
     {
-        if (enemyType == EnemyType.flocking)
-        {
-            ChangeState(new FlockingIdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
-        }
-        else
-        {
-            ChangeState(new IdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
-        }
+
+        ChangeState(new IdleState(this, enemyType, idleConfig, playerDetector, attackBehavior));
     }
 
     // Update is called once per frame

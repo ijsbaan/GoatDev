@@ -4,11 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum AttackCheckMethod
-{
-    TimerBased,
-    DetectionBased
-}
+
 public class IdleState : IEnemyState
 {
     private AttackState attackState;
@@ -82,7 +78,11 @@ public class IdleState : IEnemyState
     public virtual void Attack()
     {
         if (attackState != null)
+        {
+            attackState.idle = this;
+            attackState.enemyController = enemyController;
             enemyController.ChangeState(attackState);
+        }
     }
     public virtual void Attack(GameObject target)
     {
