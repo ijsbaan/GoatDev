@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2808327603725229028}
   - component: {fileID: 2808327603725229051}
-  - component: {fileID: 4215373068752737415}
   - component: {fileID: 2126110963225970123}
+  - component: {fileID: 2029393239531823028}
   m_Layer: 0
   m_Name: Hitbox 1
   m_TagString: Untagged
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2808327603725229029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,7 +41,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2808327603725229029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -86,8 +86,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4215373068752737415
-BoxCollider2D:
+--- !u!114 &2126110963225970123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808327603725229029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8b4922ea41c1d4887fde8e9ef26cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  DestroyAfterHit: 0
+  Tag: Enemy
+--- !u!60 &2029393239531823028
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,21 +124,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &2126110963225970123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2808327603725229029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd8b4922ea41c1d4887fde8e9ef26cd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  DestroyAfterHit: 0
-  Tag: Enemy
+  m_Points:
+    m_Paths:
+    - - {x: 0.2178407, y: 1.0693458}
+      - {x: -0.2570546, y: 1.0526992}
+      - {x: -0.6593801, y: 0.9496561}
+      - {x: -0.7718219, y: 0.7686671}
+      - {x: -0.8000877, y: 0.19855952}
+      - {x: -0.78868544, y: -0.015493393}
+      - {x: -0.66056734, y: -0.020805955}
+      - {x: 0.03237219, y: 0.00020885468}
+      - {x: 0.73762655, y: -0.008921981}
+      - {x: 0.7217052, y: 0.7693432}
+      - {x: 0.67099726, y: 0.9128525}

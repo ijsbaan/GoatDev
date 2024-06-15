@@ -17,10 +17,9 @@ public class HealthSystem : MonoBehaviour
     private Transform damageCollider;
     private Rigidbody2D rb;
 
-    public float knockbackTime = 0.2f;
+    public float knockbackTime = 0.1f;
     public float hitDirectionForce = 10f;
-    public float constForce = 5f;
-    public float inputForce = 7.5f;
+    public float knockbackStrength = 15f;
 
     private void Awake()
     {
@@ -84,25 +83,26 @@ public class HealthSystem : MonoBehaviour
     {
         Vector2 distance = this.transform.position - objectTransform.position;
 
-        StartCoroutine(CallKnockBack(distance, new Vector2(1, 1)));
+        StartCoroutine(CallKnockBack(distance));
     }
 
-    private IEnumerator CallKnockBack(Vector2 hitDirection, Vector2 constantForceDirection)
+    private IEnumerator CallKnockBack(Vector2 hitDirection)
     {
         float elapsedTime = 0;
 
         Vector2 hitForce;
-        Vector2 constantForce;
         Vector2 combinedForce;
 
+
         hitForce = hitDirection * hitDirectionForce;
-        constantForce = constantForceDirection * constForce;
 
         while (elapsedTime < knockbackTime)
         {
             elapsedTime += Time.deltaTime;
 
-            combinedForce = hitForce ;
+            hitForce.Normalize();
+
+            combinedForce = hitForce * knockbackStrength;
 
             rb.velocity = combinedForce;
 
