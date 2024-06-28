@@ -44,16 +44,9 @@ public class Flock : AttackState
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
-
-        //for (int i = 0; i < startingCount; i++)
-        //{
-        //    FlockAgent newagent = Instantiate(agentPrefab, Random.insideUnitCircle * startingCount * AgentDensity, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
-        //    newagent.name = "Agent" + i;
-        //    agents.Add(newagent);
-        //}
+        squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
     }
 
-    // Update is called once per frame
     public override void UpdateState()
     {
         if (agents.Count < maxChildren) counter++;

@@ -18,7 +18,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private float AttackDamage; // Damage value for the attack
 
-    // Initialize input actions and set up attack input
+    /// <summary>
+    /// Initialize input actions and set up attack input
+    /// </summary>
     private void Awake()
     {
         inputActions = new InputPlayer(); // Initialize input actions
@@ -26,7 +28,10 @@ public class PlayerAttack : MonoBehaviour
         inputActions.Player.Attack.performed += AttackPerformed; // Register the attack performed event
     }
 
-    // Callback when the attack input is performed
+    /// <summary>
+    /// Callback when the attack input is performed
+    /// </summary>
+    /// <param name="obj"></param>
     private void AttackPerformed(InputAction.CallbackContext obj)
     {
         CheckRotation(playerMovement.direction); // Check the player's direction and set the offset
@@ -39,7 +44,10 @@ public class PlayerAttack : MonoBehaviour
         attackCoroutine = StartCoroutine(Attack()); // Start a new attack coroutine
     }
 
-    // Coroutine to handle the attack process
+    /// <summary>
+    /// Coroutine to handle the attack process
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator Attack()
     {
         Vector3 spawnPosition = transform.position + new Vector3(offset.x, offset.y, 0); // Calculate spawn position with offset
@@ -54,7 +62,10 @@ public class PlayerAttack : MonoBehaviour
         Destroy(currentHitbox); // Destroy the attack hitbox
     }
 
-    // Check the player's direction and set the offset for the attack hitbox
+    /// <summary>
+    /// Check the player's direction and set the offset for the attack hitbox
+    /// </summary>
+    /// <param name="dir"></param>
     public void CheckRotation(direction dir)
     {
         switch (dir)
