@@ -8,7 +8,7 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Flock : MonoBehaviour
+public class Flock : AttackState
 {
     public FlockAgent agentPrefab;
     [HideInInspector]
@@ -36,9 +36,11 @@ public class Flock : MonoBehaviour
     float squareNeighbourRadius;
     float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
+
     // Start is called before the first frame update
-    void Start()
+    public override void EnterState()
     {
+        enabled = true;
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -52,7 +54,7 @@ public class Flock : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void UpdateState()
     {
         if (agents.Count < maxChildren) counter++;
         if (counter > 1000 && agents.Count < maxChildren)
@@ -76,6 +78,7 @@ public class Flock : MonoBehaviour
             }
             agent.Move(move);
         }
+        base.UpdateState();
     }
 
     private void makeChildren()
