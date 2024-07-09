@@ -13,7 +13,7 @@ public class Flock : AttackState
     public FlockAgent agentPrefab;
     [HideInInspector]
     public List<FlockAgent> agents = new List<FlockAgent>();
-    public FlockBehaviour behaviour;
+    public CompositeBehaviour behaviour;
 
     public int spawnChildren = 1;
     public int maxChildren = 10;
@@ -41,6 +41,7 @@ public class Flock : AttackState
     public override void EnterState()
     {
         enabled = true;
+        SetTargetToHunt(target);
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -78,7 +79,7 @@ public class Flock : AttackState
     {
         for (int i = 0; i < spawnChildren; i++)
         {
-            FlockAgent newAgent = Instantiate(agentPrefab, Random.insideUnitCircle * AgentDensity, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
+            FlockAgent newAgent = Instantiate(agentPrefab, new Vector2(transform.position.x,transform.position.y) + Random.insideUnitCircle * AgentDensity, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), transform);
             newAgent.name = "Agent" + i;
             newAgent.Owner = this;
             agents.Add(newAgent);
@@ -96,6 +97,24 @@ public class Flock : AttackState
             }
         }
         return context;
+    }
+
+    public void SetTargetToHunt(GameObject target)
+    {
+        Debug.Log(target);
+        foreach(var behavior in behaviour.behaviours)
+        {
+            if(behavior is HuntBehaviour hunt)
+            {
+                hunt.SetTarget(target);
+            }
+        }
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+        SetTargetToHunt(this.gameObject);
     }
 }
 

@@ -1,9 +1,4 @@
 using UnityEngine;
-
-
-
-
-
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] public IEnemyState currentState;

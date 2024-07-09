@@ -6,10 +6,16 @@ using UnityEngine;
 public class HuntBehaviour : FlockBehaviour
 {
     public float stoppingDistance = 5f; // Adjust this distance as per your requirement
+    public GameObject target;
 
+
+    public void SetTarget(GameObject newTarget)
+    {
+        target = newTarget;
+    }
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        GameObject target = GameObject.FindGameObjectWithTag("Player");
+
 
         if (target == null || agent == null)
         {
