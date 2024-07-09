@@ -52,8 +52,10 @@ public class PlayerAttack : MonoBehaviour
     {
         Vector3 spawnPosition = transform.position + new Vector3(offset.x, offset.y, 0); // Calculate spawn position with offset
 
-        currentHitbox = Instantiate(attackBox, spawnPosition, Quaternion.identity, transform); // Instantiate the attack hitbox
+        currentHitbox = Instantiate(attackBox, spawnPosition, transform.rotation, transform); // Instantiate the attack hitbox
         currentHitbox.GetComponent<DamageColliderByTag>().damage = AttackDamage; // Set the damage value for the hitbox
+
+        playerMovement.canMove = false;
 
         isAttacking = true; // Set attacking flag to true
         yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds
