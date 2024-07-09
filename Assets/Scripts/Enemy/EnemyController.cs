@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour
         {
             currentState.UpdateState();
         }
-        Debug.Log(currentState.ToString());
+        // Debug.Log(currentState.ToString());
     }
 
     public void ChangeState(IEnemyState newState)
@@ -47,7 +47,8 @@ public class EnemyController : MonoBehaviour
         currentState.EnterState();
     }
 
-    private void OnDrawGizmosSelected()
+    private void 
+        Selected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, idleConfig.detectionRadius);
