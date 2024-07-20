@@ -55,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
         currentHitbox = Instantiate(attackBox, spawnPosition, transform.rotation, transform); // Instantiate the attack hitbox
         currentHitbox.GetComponent<DamageColliderByTag>().damage = AttackDamage; // Set the damage value for the hitbox
 
-        playerMovement.canMove = false;
+        playerMovement.canMove = false; // Deactivated playerMovement
 
         isAttacking = true; // Set attacking flag to true
         yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds
