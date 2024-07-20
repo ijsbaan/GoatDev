@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        inputActions = playerMovement.inputPlayer; // Initialize input actions
+        inputActions = new InputPlayer(); // Initialize input actions
         inputActions.Player.Attack.Enable(); // Enable attack input
         inputActions.Player.Attack.performed += AttackPerformed; // Register the attack performed event
     }
@@ -61,6 +61,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds
 
         isAttacking = false; // Set attacking flag to false
+        playerMovement.canMove = true; // Deactivated playerMovement
         Destroy(currentHitbox); // Destroy the attack hitbox
     }
 

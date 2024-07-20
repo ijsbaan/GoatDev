@@ -508,6 +508,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6139790285199715138, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
+      propertyPath: m_Name
+      value: BarP
+      objectReference: {fileID: 0}
     - target: {fileID: 6139790285820139980, guid: d005d65daac15fe42a0d62782c6c4b04, type: 3}
       propertyPath: m_Name
       value: PlayerHealthBar
@@ -612,6 +616,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 734cd120cf71e5047bb108c5732c0a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1052172844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4332763742786753556, guid: 4ef85e711c8dfe746ba0d87525fb5981, type: 3}
+  m_PrefabInstance: {fileID: 2023197704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3bd57eca98a3f4ea4ea8dabb68a1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1059574189
@@ -918,6 +933,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1879494272491472177, guid: 4ef85e711c8dfe746ba0d87525fb5981, type: 3}
+      propertyPath: m_Name
+      value: BarD
+      objectReference: {fileID: 0}
     - target: {fileID: 4332763742786753556, guid: 4ef85e711c8dfe746ba0d87525fb5981, type: 3}
       propertyPath: detection
       value: 
@@ -946,6 +965,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 550421684}
+    - target: {fileID: 8220799221497494649, guid: 4ef85e711c8dfe746ba0d87525fb5981, type: 3}
+      propertyPath: playerDetector
+      value: 
+      objectReference: {fileID: 641495851}
+    - target: {fileID: 8220799221497494649, guid: 4ef85e711c8dfe746ba0d87525fb5981, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 1052172844}
     - target: {fileID: 8220799221497494649, guid: 4ef85e711c8dfe746ba0d87525fb5981, type: 3}
       propertyPath: timeBetweenSpikes
       value: 2
@@ -1039,6 +1066,10 @@ PrefabInstance:
     - target: {fileID: 6488338061708627396, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810041642320265359, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}
+      propertyPath: m_Name
+      value: BarT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7c32452545e8545b21f251bc86e2a4, type: 3}

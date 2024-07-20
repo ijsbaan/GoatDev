@@ -77,7 +77,7 @@ public class HealthSystem : MonoBehaviour
     }
     private void SetHealth(float healthNormalized)
     {
-        // barImage.fillAmount = healthNormalized;
+        barImage.fillAmount = healthNormalized;
     }
     private void KnockBack(Transform objectTransform)
     {
