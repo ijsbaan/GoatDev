@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        inputActions = new InputPlayer(); // Initialize input actions
+        inputActions = playerMovement.inputPlayer; // Initialize input actions
         inputActions.Player.Attack.Enable(); // Enable attack input
         inputActions.Player.Attack.performed += AttackPerformed; // Register the attack performed event
     }

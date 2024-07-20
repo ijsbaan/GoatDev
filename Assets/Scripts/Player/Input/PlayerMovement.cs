@@ -15,7 +15,7 @@ public enum direction
 
 public class PlayerMovement : MonoBehaviour
 {
-    private InputPlayer inputPlayer;
+    public InputPlayer inputPlayer;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Image dashImage;
 
@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 GetInputValue()
     {
         Vector2 input = inputPlayer.Player.Movement.ReadValue<Vector2>();
+        Debug.Log(input);
         return input;
     }
 
