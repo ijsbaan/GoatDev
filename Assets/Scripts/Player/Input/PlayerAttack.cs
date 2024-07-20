@@ -61,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds
 
         isAttacking = false; // Set attacking flag to false
-        playerMovement.canMove = true; // Deactivated playerMovement
+        playerMovement.canMove = true; // ReActivated playerMovement
         Destroy(currentHitbox); // Destroy the attack hitbox
     }
 

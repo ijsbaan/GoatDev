@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 GetInputValue()
     {
         Vector2 input = inputPlayer.Player.Movement.ReadValue<Vector2>();
-        Debug.Log(input);
         return input;
     }
 
